@@ -20,7 +20,7 @@
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Catalagos</a> 
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">Usuario</a>
+                            <a href="crudUsuario.jsp">Usuario</a>
                         </li>
                         <li>
                             <a href="#">Cliente</a>
