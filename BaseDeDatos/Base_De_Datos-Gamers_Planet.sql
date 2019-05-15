@@ -100,7 +100,10 @@ ON DELETE CASCADE ON UPDATE CASCADE;/*tal vez está mal esta proque es  1 a n y 
 ALTER TABLE movimiento
 ADD FOREIGN KEY (idCliente) REFERENCES cliente(idCliente)
 ON DELETE CASCADE ON UPDATE CASCADE;
-
+/*Tabla detalle movimiento*/
+ALTER TABLE detallemovimiento
+ADD FOREIGN KEY (idMovimiento) References movimiento(idMovimiento)
+ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*Tabla movimiento producto*/
 ALTER TABLE movimientoProducto
