@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
+<link rel="stylesheet" href="table.css">
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,8 +22,46 @@
         <div id="content">
             <%@ include file="menuToolBar.jsp" %>  
             <!--Aqui poner contenido de vistas-->
-            <input type="text" name="nombre" id="nombre">
+            <div class="container">
+                <h1>Alta Usuarios</h1>
+                <p>Usuarios <strong>(Empleados)</strong></p>
+
+                <ul>
+                    <li>Edita con responsabilidad.</li> 
+                    <li>Trabaja duro.</li>
+                </ul>
+
+                <div id="table" class="table-editable">
+                    <span class="table-add glyphicon glyphicon-plus"></span>
+                    <table class="table">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Contraseña</th>
+                            <th>Dirección</th>
+                            <th>Rol</th>
+                            <td><button type="button" class="btn btn-success">Añadir</button></td>
+                        </tr>
+                        <tr>
+                            <td contenteditable="true">Juan Silvestre</td>
+                            <td contenteditable="true">Ramírez Becerra</td>
+                            <td contenteditable="true">4774408656</td>
+                            <td contenteditable="true">juansilvestre@gmail.com</td>
+                            <td contenteditable="true">ASJ3343#joYw</td>
+                            <td contenteditable="true">Valle Hermoso, Bricho #213, Léon, GTO</td>
+                            <td contenteditable="true">Administrador</td>
+                            <td><button type="button" class="btn btn-primary">Actualizar</button></td>
+                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+
+
+                        </tr>
+                    </table>
+                </div>             
+            </div>
         </div>
+
         <!--Imports necesarios para menu-->
         <%@ include file="importMenu.jsp" %>  
     </body>
