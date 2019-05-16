@@ -8,6 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <!------------- MAPA------->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+   <!-- Make sure you put this AFTER Leaflet's CSS -->
+   <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+  
+    <!--------------- MAPA------->
+   
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -24,9 +31,8 @@
             <div class="container">
                 <div class="container">
                     <h4>GAMERS PLANET</h4>
-                    <div class="container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d7889.40621095499!2d-70.23299216136742!3d8.624475075086659!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e6!4m0!4m3!3m2!1d8.626995899999999!2d-70.2301559!5e0!3m2!1ses-419!2sve!4v1456756695234" style="border:0" allowfullscreen="" frameborder="0" height="250" width="100%"></iframe>
-                    </div>
+                   <div id="mapaContacto"  style="width: 100%; height: 290px; display: block;"></div>
+                    <script type="text/javascript" src="mapaContacto.js"></script> 
                     <strong>Contactenos</strong><br><strong>Oficina:</strong> 123456789
                     <hr>
                 </div>
@@ -55,9 +61,11 @@
                         <div class="form-group">
                             <label class="control-label" for="Mensaje">Mensaje</label>
                             <textarea rows="5" cols="30" class="form-control" id="Mensaje" name="Mensaje" placeholder="Introduzca su mensaje" required ></textarea>
+                            <input type="hidden" id="latitud" name="Latitud"/>
+                            <input type="hidden" id="longitud" name="longitud" />
                         </div>
                         <div class="form-group">                
-                            <input type="submit" class="btn btn-primary" value="Enviar">
+                            <input type="submit" class="btn btn-primary" onclick="obtenDatos()" value="Enviar">
                             <input type="reset" class="btn btn-default" value="Limpiar">                
                         </div>
                         <div id="respuesta" style="display: none;"></div>
