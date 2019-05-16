@@ -14,7 +14,7 @@
                     <a href="menuGamers.jsp">Home</a>                    
                 </li>
                 <li>
-                    <a href="#">Perfil usuario</a>
+                    <a href="perfilUsuario.jsp">Perfil usuario</a>
                 </li>
                 <li>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Catalagos</a> 
