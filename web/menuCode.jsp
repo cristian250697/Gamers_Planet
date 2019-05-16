@@ -26,7 +26,7 @@
                             <a href="crudClientes.jsp">Cliente</a>
                         </li>
                         <li>
-                            <a href="#">Producto</a>
+                            <a href="crudProductos.jsp">Producto</a>
                         </li>
                     </ul>
                 </li>
