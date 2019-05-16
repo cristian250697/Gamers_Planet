@@ -37,7 +37,7 @@
                     <a href="acercaDe.jsp">Acerca de</a>
                 </li>
                 <li>
-                    <a href="#">Contactos</a>
+                    <a href="contactos.jsp">Contactanos</a>
                 </li>
             </ul>
 
