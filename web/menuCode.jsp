@@ -34,7 +34,7 @@
                     <a href="movimientos.jsp">Movimientos</a>                    
                 </li>
                 <li>
-                    <a href="#">Acerca de</a>
+                    <a href="acercaDe.jsp">Acerca de</a>
                 </li>
                 <li>
                     <a href="#">Contactos</a>
