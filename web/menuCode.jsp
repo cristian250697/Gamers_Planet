@@ -31,7 +31,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">Movimientos</a>                    
+                    <a href="movimientos.jsp">Movimientos</a>                    
                 </li>
                 <li>
                     <a href="#">Acerca de</a>
