@@ -18,9 +18,11 @@
         <!-- Sidebar  -->
           <%@ include file="menuCode.jsp" %>  
         <!-- Page Content  -->
+        <div id="content">
          <%@ include file="menuToolBar.jsp" %>  
          <!--Aqui poner contenido de vistas-->
-        
+         
+        </div>
          
         <!--Imports necesarios para menu-->
     <%@ include file="importMenu.jsp" %>  
