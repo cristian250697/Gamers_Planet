@@ -21,7 +21,7 @@
                                 <a class="nav-link" href="#">Configuración</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Log out</a>
+                                <a class="nav-link" href="index.html">Log out</a>
                             </li>
                         </ul>
                     </div>
