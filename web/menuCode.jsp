@@ -23,7 +23,7 @@
                             <a href="crudUsuario.jsp">Usuario</a>
                         </li>
                         <li>
-                            <a href="#">Cliente</a>
+                            <a href="crudClientes.jsp">Cliente</a>
                         </li>
                         <li>
                             <a href="#">Producto</a>
@@ -43,7 +43,7 @@
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="#" class="download">Log out</a>
+                    <a href="index.html" class="download">Log out</a>
                 </li>
             </ul>
         </nav>

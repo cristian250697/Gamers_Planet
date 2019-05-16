@@ -1,6 +1,6 @@
 <%-- 
-    Document   : usuarioAdd
-    Created on : 15/05/2019, 08:57:37 PM
+    Document   : clienteAdd
+    Created on : 15/05/2019, 09:38:43 PM
     Author     : trebo
 --%>
 
@@ -22,7 +22,7 @@
             <%@ include file="menuToolBar.jsp" %>  
             <!--Aqui poner contenido de vistas-->
             <div class="form-group">
-                 <h1>Edita Usuarios</h1>
+                 <h1>Edita Clientes</h1>
             </div> 
             <form>
                 <div class="form-group"> <!--Nombre-->
@@ -57,11 +57,11 @@
                     <input type="text" class="form-control" id="dir_id" name="dir" placeholder="Valle Hermoso, Bricho #213, Léon, GTO">
                 </div>   
                 <div class="form-group">
-                    <label for="rol_id" class="control-label">Rol</label>
+                    <label for="rol_id" class="control-label">Estatus</label>
                     <select id="rol_id "class="browser-default custom-select">
-                        <option value="" selected>Escoje el rol</option>
-                        <option value="usuario">Usuario</option>
-                        <option value="administrador">Administrador</option>
+                        <option value="" selected>Escoje el estatus</option>
+                        <option value="1">Activo</option>
+                        <option value="0">Inactivo</option>
                     </select>     
                 </div>
                 <div class="form-group"> <!-- Submit Button -->

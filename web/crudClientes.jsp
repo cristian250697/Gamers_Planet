@@ -5,13 +5,64 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<link rel="stylesheet" href="menuGamers.css">
+<link rel="stylesheet" href="table.css">
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>GAMERS PLANET</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <!-- Sidebar  -->
+        <%@ include file="menuCode.jsp" %>  
+        <!-- Page Content  -->
+        <div id="content">
+            <%@ include file="menuToolBar.jsp" %>  
+            <!--Aqui poner contenido de vistas-->
+            <div class="container">
+                <h1>Alta Clientes</h1>
+                <p>Clientes <strong>(Invitados)</strong></p>
+
+                <ul>
+                    <li>Edita con responsabilidad.</li> 
+                    <li>Trabaja duro.</li>
+                </ul>
+
+                <div id="table" class="table-editable">
+                    <span class="table-add glyphicon glyphicon-plus"></span>
+                    <table class="table">
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Telefono</th>
+                            <th>Correo</th>
+                            <th>Contraseña</th>
+                            <th>Dirección</th>
+                            <th>Estatus</th>
+                            <td><a href="clienteAdd.jsp"><button type="button" class="btn btn-success">Añadir</button></a></td>
+                        </tr>
+                        <tr>
+                            <td>Juan Silvestre</td>
+                            <td>Ramírez Becerra</td>
+                            <td>4774408656</td>
+                            <td>juansilvestre@gmail.com</td>
+                            <td>ASJ3343#joYw</td>
+                            <td>Valle Hermoso, Bricho #213, Léon, GTO</td>
+                            <td>Activo</td>
+                            <td><button type="button" class="btn btn-primary">Actualizar</button></td>
+                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+
+
+                        </tr>
+                    </table>
+                </div>             
+            </div>
+        </div>
+
+        <!--Imports necesarios para menu-->
+        <%@ include file="importMenu.jsp" %>  
     </body>
 </html>
