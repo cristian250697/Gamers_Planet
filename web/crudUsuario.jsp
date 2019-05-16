@@ -42,16 +42,16 @@
                             <th>Contraseña</th>
                             <th>Dirección</th>
                             <th>Rol</th>
-                            <td><button type="button" class="btn btn-success">Añadir</button></td>
+                            <td><a href="usuarioAdd.jsp"><button type="button" class="btn btn-success">Añadir</button></a></td>
                         </tr>
                         <tr>
-                            <td contenteditable="true">Juan Silvestre</td>
-                            <td contenteditable="true">Ramírez Becerra</td>
-                            <td contenteditable="true">4774408656</td>
-                            <td contenteditable="true">juansilvestre@gmail.com</td>
-                            <td contenteditable="true">ASJ3343#joYw</td>
-                            <td contenteditable="true">Valle Hermoso, Bricho #213, Léon, GTO</td>
-                            <td contenteditable="true">Administrador</td>
+                            <td>Juan Silvestre</td>
+                            <td>Ramírez Becerra</td>
+                            <td>4774408656</td>
+                            <td>juansilvestre@gmail.com</td>
+                            <td>ASJ3343#joYw</td>
+                            <td>Valle Hermoso, Bricho #213, Léon, GTO</td>
+                            <td>Administrador</td>
                             <td><button type="button" class="btn btn-primary">Actualizar</button></td>
                             <td><button type="button" class="btn btn-danger">Eliminar</button></td>
 

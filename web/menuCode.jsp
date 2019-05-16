@@ -10,8 +10,8 @@
 
             <ul class="list-unstyled components">
                 <p>Play and enjoy</p>
-                <li class="active">
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>                    
+                <li>
+                    <a href="menuGamers.jsp">Home</a>                    
                 </li>
                 <li>
                     <a href="#">Perfil usuario</a>
