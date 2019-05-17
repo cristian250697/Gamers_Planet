@@ -46,10 +46,6 @@ public class ControladorUsuario {
 
         try {
             if (query.next()) {
-
-                for (int i = 1; i < 14; i++) {
-                    System.err.println("Campos de la tabla = "+ query.getString(i));
-                }
                 
                 return new Usuario(
                 query.getInt(1),
@@ -64,8 +60,7 @@ public class ControladorUsuario {
                 query.getInt(10),
                 query.getString(11),
                 query.getInt(12),
-                query.getString(13));
-                
+                query.getString(13));                
                 
             }else{
                 return null;
@@ -102,7 +97,7 @@ public class ControladorUsuario {
                 + "fechaMod = '" + usuario.getFechaModificacion() + "',"
                 + " WHERE idUsuario =" + usuario.getIdUsuario() + ";";
 
-        if (conexion.ejecutarSQL(sql)) {
+        if (conexion.ejecutarSQL(sql)){
             return true;
         } else {
             return false;

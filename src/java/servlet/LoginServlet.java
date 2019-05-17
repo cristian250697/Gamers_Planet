@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -37,7 +38,7 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("<title>Servlet LoginServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
@@ -72,42 +73,47 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         String usuario = request.getParameter("username");
         String contrasenia = request.getParameter("password");
-        
-        
+        HttpSession sesion;
+
         ControladorUsuario cUsr = new ControladorUsuario();
         Usuario usr = cUsr.buscarUsuario(Integer.parseInt(usuario));
-        
-        
-        if(usr != null){                                    // Si existe el usuario
-            if(usr.getContrasenia().equals(contrasenia)){   // Si la contraseña es válida
-                
-                if(usr.getStatusUsuario() == 1){            // Si el usuario está activo
-                        // Administrador
-                    if(usr.getStatusRol() == 0){
-                        response.sendRedirect("crudUsuario.jsp");
+
+        if (usr != null) {                                    // Si existe el usuario
+            if (usr.getContrasenia().equals(contrasenia)) {   // Si la contraseña es válida
+
+                if (usr.getStatusUsuario() == 1) {            // Si el usuario está activo
+                    // Administrador
+                    if (usr.getStatusRol() == 0) {
+                        sesion = request.getSession(true);
+                        sesion.setAttribute("usuario", usr);
+                        response.sendRedirect("perfilUsuario.jsp");
                         // Empleado
-                    }else if(usr.getStatusRol() == 1){
-                        response.sendRedirect("clienteAdd.jsp");
+                    } else if (usr.getStatusRol() == 1) {
+                        sesion = request.getSession(true);
+                        sesion.setAttribute("usuario", usr);
+                        response.sendRedirect("perfilUsuario.jsp");
                         // Cliente
-                    }else if(usr.getStatusRol() == 2){
+                    } else if (usr.getStatusRol() == 2) {
+                        sesion = request.getSession(true);
+                        sesion.setAttribute("usuario", usr);
                         response.sendRedirect("perfilUsuario.jsp");
                     }
-                }else{
+                } else {
                     System.err.println("Usuario Inactivo");
                     response.sendRedirect("login.jsp");
                 }
-            }else{
+            } else {
                 System.err.println("Contraseña inválida");
                 response.sendRedirect("login.jsp");
-            }            
-        }else{
+            }
+        } else {
             System.err.println("No existe el usuario");
             response.sendRedirect("login.jsp");
-        }      
-        
+        }
+
     }
 
     /**

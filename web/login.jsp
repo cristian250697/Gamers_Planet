@@ -15,7 +15,7 @@
     </head>
     <body>
         <div class="login-box">
-            <img src="logo.png" class="avatar" alt="Avatar Image">
+            <img src="GamersPlanet.png" class="avatar" alt="Avatar Image" style ="background-color: white;">
             <h1>Iniciar sesion</h1>
             <form method="post" action="LoginServlet">
                 <!-- USERNAME INPUT -->
