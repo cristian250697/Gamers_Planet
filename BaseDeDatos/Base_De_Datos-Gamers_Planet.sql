@@ -1,3 +1,5 @@
+-- DROP DATABASE Gamers_Planet;
+
 CREATE DATABASE Gamers_Planet;
 USE Gamers_Planet;
 CREATE TABLE usuario(
@@ -8,7 +10,7 @@ telefono varchar(50) not null,
 correo varchar(35) not null,
 contrasenia varchar(40) not null,
 direccion varchar(100) not null,
-statusRol bit(1) not null,/* usuario - administrador*/
+statusRol tinyint not null,/* usuario - administrador*/
 statusUsr bit(1) not null, /*alta - baja*/
 idUsrAlta int not null,
 fechaAlta timestamp DEFAULT current_timestamp, /*http://cambrico.net/mysql/como-insertar-automaticamente-la-fecha-y-hora-en-mysql*/
@@ -76,14 +78,15 @@ fechaMod timestamp DEFAULT current_timestamp
 );
 
 /********************LLAVES FORÁNEAS**********************/
-/*Tabla usuarios*/
+/*Tabla usuarios
 ALTER TABLE usuario
 ADD FOREIGN KEY (idUsrAlta) References usuario(idUsuario)
-ON DELETE CASCADE ON UPDATE CASCADE;
+ON DELETE CASCADE ON UPDATE CASCADE; 
 
 ALTER TABLE usuario
 ADD FOREIGN KEY (idUsrMod) References usuario(idUsuario)
 ON DELETE CASCADE ON UPDATE CASCADE;
+
 /*Tabla clientes*/
 ALTER TABLE cliente
 ADD FOREIGN KEY (idUsrAlta) References usuario(idUsuario)
@@ -135,3 +138,8 @@ ALTER TABLE areaAlmacen
 ADD FOREIGN KEY (idUsrMod) References usuario(idUsuario)
 ON DELETE CASCADE ON UPDATE CASCADE;
 
+INSERT INTO usuario VALUES (1, 'Administrador', 'Prueba', '4774091956', 'administrador@hotmail.com', 'administrador', 'Direccion prueba',0 /*Rol*/,1 /*Estatus*/, 0, NOW(),0,NOW());
+INSERT INTO usuario VALUES (2, 'Empleado', 'Prueba', '4771234567', 'empleado@hotmail.com', 'empleado', 'Direccion prueba',1 /*Rol*/,1 /*Estatus*/, 1, NOW(),0,NOW());
+INSERT INTO usuario VALUES (3, 'Cliente', 'Prueba', '4771234567', 'cliente@hotmail.com', 'cliente', 'Direccion prueba',2 /*Rol*/,1 /*Estatus*/, 1, NOW(),0,NOW());
+
+SELECT * FROM usuario;

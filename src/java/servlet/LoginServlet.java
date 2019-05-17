@@ -5,6 +5,8 @@
  */
 package servlet;
 
+import controladores.ControladorUsuario;
+import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -16,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author crist
  */
-public class Prueba extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +37,10 @@ public class Prueba extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Prueba</title>");            
+            out.println("<title>Servlet LoginServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Prueba at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -70,7 +72,42 @@ public class Prueba extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        
+        String usuario = request.getParameter("username");
+        String contrasenia = request.getParameter("password");
+        
+        
+        ControladorUsuario cUsr = new ControladorUsuario();
+        Usuario usr = cUsr.buscarUsuario(Integer.parseInt(usuario));
+        
+        
+        if(usr != null){                                    // Si existe el usuario
+            if(usr.getContrasenia().equals(contrasenia)){   // Si la contraseña es válida
+                
+                if(usr.getStatusUsuario() == 1){            // Si el usuario está activo
+                        // Administrador
+                    if(usr.getStatusRol() == 0){
+                        response.sendRedirect("crudUsuario.jsp");
+                        // Empleado
+                    }else if(usr.getStatusRol() == 1){
+                        response.sendRedirect("clienteAdd.jsp");
+                        // Cliente
+                    }else if(usr.getStatusRol() == 2){
+                        response.sendRedirect("perfilUsuario.jsp");
+                    }
+                }else{
+                    System.err.println("Usuario Inactivo");
+                    response.sendRedirect("login.jsp");
+                }
+            }else{
+                System.err.println("Contraseña inválida");
+                response.sendRedirect("login.jsp");
+            }            
+        }else{
+            System.err.println("No existe el usuario");
+            response.sendRedirect("login.jsp");
+        }      
+        
     }
 
     /**
@@ -80,7 +117,7 @@ public class Prueba extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "Servlet que valida el inicio de sesión";
     }// </editor-fold>
 
 }

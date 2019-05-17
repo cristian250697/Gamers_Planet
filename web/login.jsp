@@ -14,17 +14,16 @@
         <link rel="stylesheet" href="login.css">
     </head>
     <body>
-
         <div class="login-box">
             <img src="logo.png" class="avatar" alt="Avatar Image">
             <h1>Iniciar sesion</h1>
-            <form>
+            <form method="post" action="LoginServlet">
                 <!-- USERNAME INPUT -->
                 <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter Username">
+                <input type="text" id="username" name = "username" placeholder="Enter Username">
                 <!-- PASSWORD INPUT -->
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter Password">
+                <input type="password" id="password" name = "password" placeholder="Enter Password">
                 <input type="submit" value="Log In">
                 <a href="#">No recurdas tu contraseña?</a><br>
                 <a href="#">No tienes cuentas?</a>
