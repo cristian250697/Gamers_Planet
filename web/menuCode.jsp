@@ -30,6 +30,9 @@
                         </li>
                     </ul>
                 </li>
+                  <li>
+                    <a href="compraProducto.jsp">Compra productos</a>                    
+                </li>
                 <li>
                     <a href="movimientos.jsp">Movimientos</a>                    
                 </li>
