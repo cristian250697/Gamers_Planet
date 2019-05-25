@@ -137,9 +137,27 @@ ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE areaAlmacen
 ADD FOREIGN KEY (idUsrMod) References usuario(idUsuario)
 ON DELETE CASCADE ON UPDATE CASCADE;
-
+/*Insert to users*/
 INSERT INTO usuario VALUES (1, 'Administrador', 'Prueba', '4774091956', 'administrador@hotmail.com', 'administrador', 'Direccion prueba',0 /*Rol*/,1 /*Estatus*/, 0, NOW(),0,NOW());
 INSERT INTO usuario VALUES (2, 'Empleado', 'Prueba', '4771234567', 'empleado@hotmail.com', 'empleado', 'Direccion prueba',1 /*Rol*/,1 /*Estatus*/, 1, NOW(),0,NOW());
 INSERT INTO usuario VALUES (3, 'Cliente', 'Prueba', '4771234567', 'cliente@hotmail.com', 'cliente', 'Direccion prueba',2 /*Rol*/,1 /*Estatus*/, 1, NOW(),0,NOW());
 
+/*Insert ti storage area*/
+INSERT INTO areaAlmacen (nombre,idUsrAlta,fechaAlta,idUsrMod,fechaMod)VALUES('Electronica',1,NOW(),1,NOW());
+
+/*Insert to products*/
+INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod)
+VALUES ('XBOX 360','XBOX 360 con disco duro de 1 TB con 2 juegos ademas de dos palancas','1 pz',10,1,1,1,NOW(),1,NOW());
+
+INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod)
+VALUES ('XBOX ONE','XBOX ONE con disco duro de 1 TB con 2 juegos ademas de dos palancas','1 pz',10,1,1,1,NOW(),1,NOW());
+
+INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod)
+VALUES ('PLAY STATION 4','PLAY STATION con disco duro de 1 TB con 2 juegos ademas de dos palancas','1 pz',10,1,1,1,NOW(),1,NOW());
+
+INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod)
+VALUES ('Audifonos BEAT','Audifonos BEAT BY DOCTOR DREE hard sound','1 pz',10,1,1,1,NOW(),1,NOW());
+
 SELECT * FROM usuario;
+select * from producto;
+select * from areaAlmacen;

@@ -22,16 +22,15 @@ body {
 }
 
 .login-box .avatar {
-    width: 250px;
+    /*    width: 250px;*/
     height: 120px;
-    border-radius: 3%;
+    /*border-radius: 3%;*/
     position: absolute;
-    top: -90px;
+    top: -100px;
     /* left: calc(50% - 50px);*/
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    box-shadow: 0px 0px 10px 10px #fff;
+    margin: auto;
+    /*box-shadow: 0px 0px 10px 10px #fff;*/
 }
 
 .login-box h1 {
