@@ -25,6 +25,7 @@
             <%for (int i = 0; i < 6; i++) {
             %>
             <div class="card">
+                <a id="link" href="productoDetalle.jsp">
                 <img id="ic_car" src="icon_add_cart.png" alt="Avatar">
                 <img  id="ic_prod" src="ic_producto.png" alt="Avatar" >
                 <div class="container">
@@ -32,6 +33,7 @@
                     <p>Departamento</p> 
                     <span style=" margin-left: 80%; margin-bottom: 50px;">$1000</span>
                 </div>
+                </a>
             </div>
             <%
                 }

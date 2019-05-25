@@ -11,42 +11,42 @@
             <ul class="list-unstyled components">
                 <p>Play and enjoy</p>
                 <li>
-                    <a href="menuGamers.jsp">Home</a>                    
+                    <a style="text-decoration: none;" href="menuGamers.jsp">Home</a>                    
                 </li>
                 <li>
-                    <a href="perfilUsuario.jsp">Perfil usuario</a>
+                    <a style="text-decoration: none;" href="perfilUsuario.jsp">Perfil usuario</a>
                 </li>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Catalagos</a> 
+                    <a style="text-decoration: none;" href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Catalagos</a> 
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="crudUsuario.jsp">Usuario</a>
+                            <a style="text-decoration: none;" href="crudUsuario.jsp">Usuario</a>
                         </li>
                         <li>
-                            <a href="crudClientes.jsp">Cliente</a>
+                            <a style="text-decoration: none;" href="crudClientes.jsp">Cliente</a>
                         </li>
                         <li>
-                            <a href="crudProductos.jsp">Producto</a>
+                            <a style="text-decoration: none;" href="crudProductos.jsp">Producto</a>
                         </li>
                     </ul>
                 </li>
                   <li>
-                    <a href="compraProducto.jsp">Compra productos</a>                    
+                    <a style="text-decoration: none;" href="compraProducto.jsp">Compra productos</a>                    
                 </li>
                 <li>
-                    <a href="movimientos.jsp">Movimientos</a>                    
+                    <a style="text-decoration: none;" href="movimientos.jsp">Movimientos</a>                    
                 </li>
                 <li>
-                    <a href="acercaDe.jsp">Acerca de</a>
+                    <a style="text-decoration: none;" href="acercaDe.jsp">Acerca de</a>
                 </li>
                 <li>
-                    <a href="contactos.jsp">Contactanos</a>
+                    <a style="text-decoration: none;" href="contactos.jsp">Contactanos</a>
                 </li>
             </ul>
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a href="index.html" class="download">Log out</a>
+                    <a style="text-decoration: none;" href="index.html" class="download">Log out</a>
                 </li>
             </ul>
         </nav>
