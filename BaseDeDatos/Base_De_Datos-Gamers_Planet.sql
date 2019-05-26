@@ -45,7 +45,8 @@ statusProd bit(1) not null,
 idUsrAlta int not null,
 fechaAlta timestamp DEFAULT current_timestamp,
 idUsrMod int not null,
-fechaMod timestamp DEFAULT current_timestamp
+fechaMod timestamp DEFAULT current_timestamp,
+precio float(7,2)
 );
 
 CREATE TABLE movimientoProducto(
@@ -146,17 +147,17 @@ INSERT INTO usuario VALUES (3, 'Cliente', 'Prueba', '4771234567', 'cliente@hotma
 INSERT INTO areaAlmacen (nombre,idUsrAlta,fechaAlta,idUsrMod,fechaMod)VALUES('Electronica',1,NOW(),1,NOW());
 
 /*Insert to products*/
-INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod)
-VALUES ('XBOX 360','XBOX 360 con disco duro de 1 TB con 2 juegos ademas de dos palancas','1 pz',10,1,1,1,NOW(),1,NOW());
+INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod,precio)
+VALUES ('XBOX 360','XBOX 360 con disco duro de 1 TB con 2 juegos ademas de dos palancas','1 pz',10,1,1,1,NOW(),1,NOW(),3000);
 
-INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod)
-VALUES ('XBOX ONE','XBOX ONE con disco duro de 1 TB con 2 juegos ademas de dos palancas','1 pz',10,1,1,1,NOW(),1,NOW());
+INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod,precio)
+VALUES ('XBOX ONE','XBOX ONE con disco duro de 1 TB con 2 juegos ademas de dos palancas','1 pz',10,1,1,1,NOW(),1,NOW(),7000);
 
-INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod)
-VALUES ('PLAY STATION 4','PLAY STATION con disco duro de 1 TB con 2 juegos ademas de dos palancas','1 pz',10,1,1,1,NOW(),1,NOW());
+INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod,precio)
+VALUES ('PLAY STATION 4','PLAY STATION con disco duro de 1 TB con 2 juegos ademas de dos palancas','1 pz',10,1,1,1,NOW(),1,NOW(),7000);
 
-INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod)
-VALUES ('Audifonos BEAT','Audifonos BEAT BY DOCTOR DREE hard sound','1 pz',10,1,1,1,NOW(),1,NOW());
+INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod,precio)
+VALUES ('Audifonos BEAT','Audifonos BEAT BY DOCTOR DREE hard sound','1 pz',10,1,1,1,NOW(),1,NOW(),1000);
 
 SELECT * FROM usuario;
 select * from producto;
