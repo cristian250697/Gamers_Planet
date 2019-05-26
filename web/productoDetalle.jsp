@@ -67,16 +67,9 @@
                           ">$1000</span>
                     <p style="margin-top: 40px">Departamento</p>
                     <p style="margin-top: 40px">Detalle Producto</p>
-                    <div class="btn-group" style="margin-top: 10px">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Cantidad
-                        </button>
-                        <div id ="num" class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                        <input type="number" value="num">
+                    <div>
+                        <label class="box" for="quantity">Unidades: </label>
+                        <input id="quantity" type="number" value="1" min="1" max="1000" step="1"/>
                     </div>
                     <div style="text-align: center">
                         <button type="button" style="margin-top: 30%" class="btn btn-primary">Comprar ahora</button>

@@ -14,6 +14,7 @@ public class AccesoBD {
 
     //Se crea un objeto de la clase conexion
     public Connection conexion = null;
+    private Statement sentencia = null;
 
     /**
      * Constructor de la clase
@@ -33,9 +34,9 @@ public class AccesoBD {
             //con la cadena depende de la gestión de la base de datos a utilizar
             //El Driver se tiene que agregar al proyecto web en Llibraries
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gamers_Planet", "root", "");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gamers_Planet", "root", "MyNewPass");
             return true;
-        } catch (Exception ex) {
+        } catch (ClassNotFoundException | SQLException ex) {
             return false;
         }
     }
@@ -49,7 +50,7 @@ public class AccesoBD {
      */
     public boolean ejecutarSQL(String sql) {
         try {
-            Statement sentencia = conexion.createStatement();
+            sentencia = conexion.createStatement();
             sentencia.executeUpdate(sql);
             return true;
         } catch (SQLException ex) {
@@ -67,7 +68,7 @@ public class AccesoBD {
     public ResultSet ejecutarSQLSelect(String sql) {
 
         try {
-            Statement sentencia = conexion.createStatement();
+            sentencia = conexion.createStatement();
             return sentencia.executeQuery(sql);
         } catch (SQLException ex) {
             return null;
@@ -83,10 +84,10 @@ public class AccesoBD {
     public boolean ejecutarTransaccion(String[] sql) {
         boolean estado = true;
         try {
-            Statement sentencia = conexion.createStatement();
+            sentencia = conexion.createStatement();
             conexion.setAutoCommit(false);
-            for (int i = 0; i < sql.length; i++) {
-                sentencia.executeUpdate(sql[i]);
+            for (String sql1 : sql) {
+                sentencia.executeUpdate(sql1);
                 JOptionPane.showMessageDialog(null, "Caída del sistema");
             }
             conexion.commit();
@@ -112,7 +113,8 @@ public class AccesoBD {
     public void cerrarConexion() {
         try {
             conexion.close();
-        } catch (Exception e) {
+            sentencia.close();
+        } catch (SQLException e) {
         }
     }
 }

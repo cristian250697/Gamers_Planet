@@ -4,6 +4,8 @@
     Author     : trebo
 --%>
 
+<%@page import="entidades.Producto"%>
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
 <link rel="stylesheet" href="compraProducto.css">
@@ -22,17 +24,19 @@
         <div id="content">
             <%@ include file="menuToolBar.jsp" %>  
             <!--Aqui poner contenido de vistas-->
-            <%for (int i = 0; i < 6; i++) {
+            <%
+                ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("Productos");
+                for (Producto producto : productos) {
             %>
             <div class="card">
                 <a id="link" href="productoDetalle.jsp">
-                <img id="ic_car" src="icon_add_cart.png" alt="Avatar">
-                <img  id="ic_prod" src="ic_producto.png" alt="Avatar" >
-                <div class="container">
-                    <h4><b>Producto</b></h4> 
-                    <p>Departamento</p> 
-                    <span style=" margin-left: 80%; margin-bottom: 50px;">$1000</span>
-                </div>
+                    <img id="ic_car" src="icon_add_cart.png" alt="Avatar">
+                    <img  id="ic_prod" src="ic_producto.png" alt="Avatar" >
+                    <div class="container">
+                        <h4><b><%=producto.getNombre()%></b></h4> 
+                        <p>Departamento</p> 
+                        <p style=" text-align: right; color: green; margin-bottom: 50px;">$<%=producto.getPrecio()%></p>
+                    </div>
                 </a>
             </div>
             <%

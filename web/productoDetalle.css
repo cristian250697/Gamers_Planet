@@ -1,3 +1,4 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 .card {
     /* Add shadows to create the "card" effect */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -55,4 +56,12 @@
     top: 50%; /* pushes the icon in the middle of the height */
     z-index: 5;
     display: inline-block;
+}
+
+.box{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
 }

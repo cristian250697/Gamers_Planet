@@ -31,7 +31,7 @@
                     </ul>
                 </li>
                   <li>
-                    <a style="text-decoration: none;" href="compraProducto.jsp">Compra productos</a>                    
+                    <a style="text-decoration: none;" href="ControllProducts">Compra productos</a>                    
                 </li>
                 <li>
                     <a style="text-decoration: none;" href="movimientos.jsp">Movimientos</a>                    
