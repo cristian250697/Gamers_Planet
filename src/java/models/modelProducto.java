@@ -58,16 +58,16 @@ public class modelProducto {
                     producto.setDescripcion(response.getString(3));
                     producto.setUnidad(response.getString(4));
                     producto.setExistencia(response.getInt(5));
-                    producto.setIdArea(response.getInt(6));
+                    producto.setIdArea(getIdToString(response.getInt(6), "idArea", "nombre", "areaAlmacen"));
                     if (response.getInt(7) == 0) {
                         status = false;
                     } else if (response.getInt(7) == 1) {
                         status = true;
                     }
                     producto.setStatusProd(status);
-                    producto.setIdUsrAlta(response.getInt(8));
+                    producto.setIdUsrAlta(getIdToString(response.getInt(8), "idUsuario", "nombre", "usuario"));
                     producto.setFechaAlta(response.getTimestamp(9));
-                    producto.setIdUsrMod(response.getInt(10));
+                    producto.setIdUsrMod(getIdToString(response.getInt(10), "idUsuario", "nombre", "usuario"));
                     producto.setFechaMod(response.getTimestamp(11));
                     producto.setPrecio(response.getFloat(12));
                     productos.add(producto);
@@ -84,9 +84,20 @@ public class modelProducto {
         }
     }
 
-    private String getIdToString(int id) {
-        query = "";
-        return "";
+    private String getIdToString(int id, String idName, String nombreCampo, String tabla) {
+        query = "SELECT " + nombreCampo + " FROM " + tabla + " WHERE " + idName + "=" + id + ";";
+        ResultSet response = conexion.ejecutarSQLSelect(query);
+        try {
+            String nombre = "";
+            while (response.next()) {
+                nombre = response.getString(1);
+            }
+            return nombre;
+        } catch (SQLException e) {
+            conexion.cerrarConexion();
+            System.out.println(e);
+        }
+        return "Area no encontrada";
     }
 
 //    public Producto buscarProducto(int idProdcuto) {

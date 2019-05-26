@@ -9,18 +9,18 @@ public class Producto {
     private String descripcion;
     private String unidad;
     private int existencia;
-    private int idArea;
+    private String idArea;
     private boolean statusProd;
-    private int idUsrAlta;
+    private String idUsrAlta;
     private Timestamp fechaAlta;
-    private int idUsrMod;
+    private String idUsrMod;
     private Timestamp fechaMod;
     private float precio;
 
     public Producto() {
     }
 
-    public Producto(int idProducto, String nombre, String descripcion, String unidad, int existencia, int idArea, boolean statusProd, int idUsrAlta, Timestamp fechaAlta, int idUsrMod, Timestamp fechaMod, float precio) {
+    public Producto(int idProducto, String nombre, String descripcion, String unidad, int existencia, String idArea, boolean statusProd, String idUsrAlta, Timestamp fechaAlta, String idUsrMod, Timestamp fechaMod, float precio) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -33,14 +33,6 @@ public class Producto {
         this.idUsrMod = idUsrMod;
         this.fechaMod = fechaMod;
         this.precio = precio;
-    }
-
-    public Timestamp getFechaMod() {
-        return fechaMod;
-    }
-
-    public void setFechaMod(Timestamp fechaMod) {
-        this.fechaMod = fechaMod;
     }
 
     public int getIdProducto() {
@@ -83,11 +75,11 @@ public class Producto {
         this.existencia = existencia;
     }
 
-    public int getIdArea() {
+    public String getIdArea() {
         return idArea;
     }
 
-    public void setIdArea(int idArea) {
+    public void setIdArea(String idArea) {
         this.idArea = idArea;
     }
 
@@ -99,11 +91,11 @@ public class Producto {
         this.statusProd = statusProd;
     }
 
-    public int getIdUsrAlta() {
+    public String getIdUsrAlta() {
         return idUsrAlta;
     }
 
-    public void setIdUsrAlta(int idUsrAlta) {
+    public void setIdUsrAlta(String idUsrAlta) {
         this.idUsrAlta = idUsrAlta;
     }
 
@@ -115,12 +107,20 @@ public class Producto {
         this.fechaAlta = fechaAlta;
     }
 
-    public int getIdUsrMod() {
+    public String getIdUsrMod() {
         return idUsrMod;
     }
 
-    public void setIdUsrMod(int idUsrMod) {
+    public void setIdUsrMod(String idUsrMod) {
         this.idUsrMod = idUsrMod;
+    }
+
+    public Timestamp getFechaMod() {
+        return fechaMod;
+    }
+
+    public void setFechaMod(Timestamp fechaMod) {
+        this.fechaMod = fechaMod;
     }
 
     public float getPrecio() {
@@ -130,5 +130,7 @@ public class Producto {
     public void setPrecio(float precio) {
         this.precio = precio;
     }
+
+    
 
 }
