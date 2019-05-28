@@ -24,7 +24,7 @@
             <div class="form-group">
                  <h1>Edita Clientes</h1>
             </div> 
-            <form>
+            <form action="ClienteServlet" method="POST">
                 <div class="form-group"> <!--Nombre-->
                     <label for="name_id" class="control-label">Nombre</label>
                     <input type="text" class="form-control" id="name_id" name="name" placeholder="José Benito">
@@ -58,8 +58,8 @@
                 </div>   
                 <div class="form-group">
                     <label for="rol_id" class="control-label">Estatus</label>
-                    <select id="rol_id "class="browser-default custom-select">
-                        <option value="" selected>Escoje el estatus</option>
+                    <select id="rol_id" name="rolid" class="browser-default custom-select">
+                        <option value="" selected disabled>Escoje el estatus</option>
                         <option value="1">Activo</option>
                         <option value="0">Inactivo</option>
                     </select>     
