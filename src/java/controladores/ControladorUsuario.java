@@ -1,6 +1,6 @@
 package controladores;
 
-import entidades.Usuario;
+import entidades.Usuario1;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
@@ -14,7 +14,7 @@ public class ControladorUsuario {
         estadoBD = conexion.conectarBD();
     }
 
-    public boolean crearUsuario(Usuario usuario) {
+    public boolean crearUsuario(Usuario1 usuario) {
         String sql = "INSERT INTO usuario (nombre, apellidos, telefono, correo, contrasenia, direccion, statusRol, statusUsr, idUsrAlta, fechaAlta, idUsrMod, fechaMod)"
                 + "VALUES("
                 + "'" + usuario.getNombre() + "',"
@@ -40,14 +40,14 @@ public class ControladorUsuario {
 
     }
 
-    public Usuario buscarUsuario(int idUsuario) {
+    public Usuario1 buscarUsuario(int idUsuario) {
         String sql = "SELECT * FROM usuario WHERE idUsuario = " + idUsuario;
         ResultSet query = conexion.ejecutarSQLSelect(sql);
 
         try {
             if (query.next()) {
                 
-                return new Usuario(
+                return new Usuario1(
                 query.getInt(1),
                 query.getString(2),
                 query.getString(3),
@@ -83,7 +83,7 @@ public class ControladorUsuario {
         }
     }
 
-    public boolean actualizaUsuario(Usuario usuario) {
+    public boolean actualizaUsuario(Usuario1 usuario) {
 
         String sql = "UPDATE usuario SET "
                 + "nombre = '" + usuario.getNombre() + "',"
