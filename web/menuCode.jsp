@@ -26,7 +26,7 @@
                             <a style="text-decoration: none;" href="crudClientes.jsp">Cliente</a>
                         </li>
                         <li>
-                            <a style="text-decoration: none;" href="crudProductos.jsp">Producto</a>
+                            <a style="text-decoration: none;" href="ControllProdcutoCRUD">Producto</a>
                         </li>
                     </ul>
                 </li>
