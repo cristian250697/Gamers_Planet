@@ -5,7 +5,7 @@
     transition: 0.3s;
     border-radius: 5px;
     width: 50%;
-    height: 60%;
+    height: 80%;
     float: left;
     margin: 30px;
 }
@@ -41,39 +41,40 @@
 /*CSS image carrusel*/
 
 .banner_fluid {
-    padding-left:0;
-    padding-right:0;
+/*    padding-left:0;
+    padding-right:0;*/
 }
 
 .carousel-control {
-    position: absolute;
-    top: 50%; /* pushes the icon in the middle of the height */
+/*    position: absolute;
+    top: 50%;  pushes the icon in the middle of the height 
     z-index: 5;
-    display: inline-block;}
+    display: inline-block;*/
+}
 
 .carousel-control {
-    position: absolute;
-    top: 50%; /* pushes the icon in the middle of the height */
+/*    position: absolute;
+    top: 50%;  pushes the icon in the middle of the height 
     z-index: 5;
-    display: inline-block;
+    display: inline-block;*/
 }
 .carousel-indicators li {
-    display: inline-block;
-    width: 48px;
-    height: 48px;
+/*    display: inline-block;
+    width: 10px;
+    height: 10px;
     margin: 10px;
     text-indent: 0;
     cursor: pointer;
     border: none;
-    border-radius: 50%;
+    border-radius: 10%;
     background-color: #0000ff;
-    box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);    
+    box-shadow: inset 1px 1px 1px 1px rgba(0,0,0,0.5);    */
 }
 .carousel-indicators .active {
-    width: 48px;
+/*    width: 48px;
     height: 48px;
     margin: 10px;
-    background-color: #ffff99;
+    background-color: #ffff99;*/
 }
 
 .box{

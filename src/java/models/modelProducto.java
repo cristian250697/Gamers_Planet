@@ -58,16 +58,19 @@ public class modelProducto {
                     producto.setDescripcion(response.getString(3));
                     producto.setUnidad(response.getString(4));
                     producto.setExistencia(response.getInt(5));
-                    producto.setIdArea(getIdToString(response.getInt(6), "idArea", "nombre", "areaAlmacen"));
+                    producto.setIdArea(response.getInt(6));
+                    producto.setIdAreaS(getIdToString(response.getInt(6), "idArea", "nombre", "areaAlmacen"));
                     if (response.getInt(7) == 0) {
                         status = false;
                     } else if (response.getInt(7) == 1) {
                         status = true;
                     }
                     producto.setStatusProd(status);
-                    producto.setIdUsrAlta(getIdToString(response.getInt(8), "idUsuario", "nombre", "usuario"));
+                    producto.setIdUsrAlta(response.getInt(8));
+                    producto.setIdUsrAltaS(getIdToString(response.getInt(8), "idUsuario", "nombre", "usuario"));
                     producto.setFechaAlta(response.getTimestamp(9));
-                    producto.setIdUsrMod(getIdToString(response.getInt(10), "idUsuario", "nombre", "usuario"));
+                    producto.setIdUsrMod(response.getInt(10));
+                    producto.setIdUsrModS(getIdToString(response.getInt(10), "idUsuario", "nombre", "usuario"));
                     producto.setFechaMod(response.getTimestamp(11));
                     producto.setPrecio(response.getFloat(12));
                     productos.add(producto);
@@ -98,6 +101,49 @@ public class modelProducto {
             System.out.println(e);
         }
         return "Area no encontrada";
+    }
+
+    public Producto searchProductoByName(String nameProduct) {
+        Producto producto = new Producto();
+        query = "SELECT * FROM producto where nombre='" + nameProduct+"'";
+        ResultSet response = conexion.ejecutarSQLSelect(query);
+        if (response != null) {
+            try {
+                boolean status = false;
+                while (response.next()) {
+
+                    producto.setIdProducto(response.getInt(1));
+                    producto.setNombre(response.getString(2));
+                    producto.setDescripcion(response.getString(3));
+                    producto.setUnidad(response.getString(4));
+                    producto.setExistencia(response.getInt(5));
+                    producto.setIdArea(response.getInt(6));
+                    producto.setIdAreaS(getIdToString(response.getInt(6), "idArea", "nombre", "areaAlmacen"));
+                    if (response.getInt(7) == 0) {
+                        status = false;
+                    } else if (response.getInt(7) == 1) {
+                        status = true;
+                    }
+                    producto.setStatusProd(status);
+                    producto.setIdUsrAlta(response.getInt(8));
+                    producto.setIdUsrAltaS(getIdToString(response.getInt(8), "idUsuario", "nombre", "usuario"));
+                    producto.setFechaAlta(response.getTimestamp(9));
+                    producto.setIdUsrMod(response.getInt(10));
+                    producto.setIdUsrModS(getIdToString(response.getInt(10), "idUsuario", "nombre", "usuario"));
+                    producto.setFechaMod(response.getTimestamp(11));
+                    producto.setPrecio(response.getFloat(12));
+
+                }
+                conexion.cerrarConexion();
+
+            } catch (SQLException e) {
+                conexion.cerrarConexion();
+                System.out.println("fallo traer todos los productos");
+            }
+            return producto;
+        } else {
+            return producto;
+        }
     }
 
 //    public Producto buscarProducto(int idProdcuto) {

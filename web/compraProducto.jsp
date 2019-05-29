@@ -26,16 +26,15 @@
             <!--Aqui poner contenido de vistas-->
             <%
                 ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("Productos");
-                request.setAttribute("Producto", productos);
                 for (Producto producto : productos) {
             %>
             <div class="card">
-                    <a id="link" href="ControllProductoDetalle">
+                <a id="link" href="ControllProductoDetalle?producto=<%=producto.getNombre()%>">
                         <img id="ic_car" src="icon_add_cart.png" alt="Avatar">
                         <img  id="ic_prod" src="ic_producto.png" alt="Avatar" >
                         <div class="container">
                             <h4><b><%=producto.getNombre()%></b></h4> 
-                            <p><%=producto.getIdArea()%></p> 
+                            <p><%=producto.getIdAreaS()%></p> 
                             <p style=" text-align: right; color: green; margin-bottom: 50px;">$<%=producto.getPrecio()%></p>
                         </div>
                     </a>
