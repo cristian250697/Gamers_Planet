@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.modelProducto;
 
 public class ControllProductoDetalle extends HttpServlet {
 
@@ -15,31 +16,12 @@ public class ControllProductoDetalle extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-
-            ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("Producto");
-            if (productos.isEmpty()) {
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet ControllProductoDetalle</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<p>Si esta vacio</p>");
-                out.println("</body>");
-                out.println("</html>");
-
-            } else {
-                out.println("<p>Si esta vacio</p>");
-                out.println("<!DOCTYPE html>");
-                out.println("<html>");
-                out.println("<head>");
-                out.println("<title>Servlet ControllProductoDetalle</title>");
-                out.println("</head>");
-                out.println("<body>");
-                out.println("<p>No esta vacio</p>");
-                out.println("</body>");
-                out.println("</html>");
-            }
+            modelProducto productoM = new modelProducto();
+            String name = request.getParameter("producto");
+            System.out.println(name);
+            Producto producto = productoM.searchProductoByName(name);
+            request.setAttribute("Producto", producto);
+            request.getRequestDispatcher("productoDetalle.jsp").forward(request, response);
 
         }
     }
