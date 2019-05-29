@@ -52,7 +52,8 @@ precio float(7,2)
 CREATE TABLE movimientoProducto(
 idMovimientoProducto int auto_increment not null PRIMARY KEY,
 idProducto int not null,
-idMovimiento int not null
+idMovimiento int not null,
+unidades int not null
 );
 
 CREATE TABLE movimiento(
