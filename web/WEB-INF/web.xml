@@ -13,13 +13,8 @@
         <servlet-class>controladores.ControllProductoDetalle</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
-        <servlet-name>ControlProductoEdit</servlet-name>
-        <servlet-class>controladores.ControlProductoEdit</servlet-class>
-=======
         <servlet-name>ClienteServlet</servlet-name>
         <servlet-class>servlet.ClienteServlet</servlet-class>
->>>>>>> master
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -34,13 +29,8 @@
         <url-pattern>/ControllProductoDetalle</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
-        <servlet-name>ControlProductoEdit</servlet-name>
-        <url-pattern>/ControlProductoEdit</url-pattern>
-=======
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
->>>>>>> master
     </servlet-mapping>
     <session-config>
         <session-timeout>

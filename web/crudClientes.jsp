@@ -4,13 +4,10 @@
     Author     : trebo
 --%>
 
-<<<<<<< HEAD
-=======
 <%@page import="controladores.ClienteDAO"%>
 <%@page import="entidades.Cliente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
->>>>>>> master
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
 <link rel="stylesheet" href="table.css">
@@ -51,21 +48,6 @@
                             <th>Estatus</th>
                             <td><a href="clienteAdd.jsp"><button type="button" class="btn btn-success">Añadir</button></a></td>
                         </tr>
-<<<<<<< HEAD
-                        <tr>
-                            <td>Juan Silvestre</td>
-                            <td>Ramírez Becerra</td>
-                            <td>4774408656</td>
-                            <td>juansilvestre@gmail.com</td>
-                            <td>ASJ3343#joYw</td>
-                            <td>Valle Hermoso, Bricho #213, Léon, GTO</td>
-                            <td>Activo</td>
-                            <td><button type="button" class="btn btn-primary">Actualizar</button></td>
-                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-
-
-                        </tr>
-=======
                         <%
                             List<Cliente> clientes = new ClienteDAO().getAllCliente();
                             if(clientes != null){
@@ -86,7 +68,6 @@
                                 }
                             }
                         %>
->>>>>>> master
                     </table>
                 </div>             
             </div>

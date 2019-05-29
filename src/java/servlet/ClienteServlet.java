@@ -7,7 +7,7 @@ package servlet;
 
 import controladores.ClienteDAO;
 import entidades.Cliente;
-import entidades.Usuario1;
+import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Calendar;
@@ -86,7 +86,7 @@ public class ClienteServlet extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         HttpSession session = (HttpSession)request.getSession();
-        Usuario1 user = (Usuario1)session.getAttribute("usuario");
+        Usuario user = (Usuario)session.getAttribute("usuario");
         Cliente cliente = new Cliente();
         Calendar fechaActual = new GregorianCalendar();
         String hoy = fechaActual.get(Calendar.YEAR)+"-"+(fechaActual.get(Calendar.MONTH)+1)+"-"+fechaActual.get(Calendar.DAY_OF_MONTH);

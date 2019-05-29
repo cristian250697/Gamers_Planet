@@ -4,7 +4,6 @@
     Author     : trebo
 --%>
 
-<%@page import="entidades.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
 <link rel="stylesheet" href="productoDetalle.css">
@@ -23,75 +22,58 @@
         <div id="content">
             <%@ include file="menuToolBar.jsp" %>  
             <!--Aqui poner contenido de vistas-->
-            <%
-                Producto producto = (Producto) request.getAttribute("Producto");
-            %>
             <div class="card">
-                <!--Carousel Wrapper-->
-                <div id="carousel-thumb" class="carousel slide carousel-fade carousel-thumbnails" data-ride="carousel">
-                    <!--Slides-->
-                    <div class="carousel-inner" role="listbox">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(88).jpg"
-                                 alt="First slide">
+                            <img class="d-block w-75" src="ic_producto.png" style="width: 100px;height: 300px;" alt="First slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(121).jpg"
-                                 alt="Second slide">
+                            <img class="d-block w-75" src="maquina1.png" style="width: 100px;height: 300px;" alt="Second slide">
                         </div>
                         <div class="carousel-item">
-                            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(31).jpg"
-                                 alt="Third slide">
+                            <img class="d-block w-75" src="maquina.png" style="width: 100px;height: 300px;" alt="Third slide">
                         </div>
                     </div>
-                    <!--/.Slides-->
-                    <!--Controls-->
-                    <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span style="background-color:#CEDABC;" class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
                     </a>
-                    <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span style="background-color:#CEDABC; "class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span  class="sr-only">Next</span>
                     </a>
-                    <!--/.Controls-->
-                    <ol class="carousel-indicators">
-                        <li data-target="#carousel-thumb" data-slide-to="0" class="active">
-                            <img src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(88).jpg" width="100">
-                        </li>
-                        <li data-target="#carousel-thumb" data-slide-to="1">
-                            <img src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(121).jpg" width="100">
-                        </li>
-                        <li data-target="#carousel-thumb" data-slide-to="2">
-                            <img src="https://mdbootstrap.com/img/Photos/Others/Carousel-thumbs/img%20(31).jpg" width="100">
-                        </li>
-                    </ol>
                 </div>
-                <!--/.Carousel Wrapper-->
                 <div class="container">
-                    <h4><b><%=producto.getNombre()%></b></h4> 
-                    <p><%=producto.getIdAreaS()%></p> 
+                    <h4><b>Producto</b></h4> 
+                    <p>Departamento</p> 
                 </div>
             </div>
             <div class="card_comp" style="float: left;">
                 <div class="container">
-                    <h4 style="text-align: center"><b><%=producto.getNombre()%></b></h4> 
+                    <h4 style="text-align: center"><b>Producto nombre</b></h4> 
                     <span style="
-                          margin:19%;                        
+                          margin-top: 30px;
+                          margin-left: 25%;
                           font-family: monospace;
                           font-size: 60;
                           font-weight: lighter;
-
-                          ">$<%=producto.getPrecio()%></span>
-                    <p style="margin-top: 40px"><%=producto.getIdAreaS()%></p>
-                    <p style="margin-top: 40px"><%=producto.getDescripcion()%></p>
+                          text-align: center;
+                          ">$1000</span>
+                    <p style="margin-top: 40px">Departamento</p>
+                    <p style="margin-top: 40px">Detalle Producto</p>
                     <div>
                         <label class="box" for="quantity">Unidades: </label>
                         <input id="quantity" type="number" value="1" min="1" max="1000" step="1"/>
                     </div>
-                    <div style="text-align: center; margin: 20px">
-                        <button type="button" class="btn btn-primary">Comprar ahora</button>
-                        <button type="button"  class="btn btn-success">Añadir a carrito</button>
+                    <div style="text-align: center">
+                        <button type="button" style="margin-top: 30%" class="btn btn-primary">Comprar ahora</button>
+                        <button type="button" style="margin-top: 30%" class="btn btn-success">Añadir a carrito</button>
                     </div>
                 </div>
             </div>
