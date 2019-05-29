@@ -4,6 +4,9 @@
     Author     : trebo
 --%>
 
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="entidades.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
 <link rel="stylesheet" href="table.css">
@@ -44,23 +47,38 @@
                             <th>Fecha de alta</th>
                             <th>Usuario ultima modificación</th>
                             <th>Fecha ultima modificación</th>
-                            <td><a href="productosAdd.jsp"><button type="button" class="btn btn-success">Añadir</button></a></td>
+                            <td><a href="ControllProductoCRUD?action=add"><button type="button" class="btn btn-success">Añadir</button></a></td>
                         </tr>
+                        <%
+                            ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("Productos");
+                            Timestamp fechaActual = (Timestamp) request.getAttribute("fecha");
+                            for (Producto producto : productos) {
+
+                        %>
                         <tr>
-                            <td>Xbox 360</td>
-                            <td>Consola de Microsoft corporation</td>
-                            <td>1pz</td>
-                            <td>30</td>
-                            <td>Juegos</td>
-                            <td>Activo</td>
-                            <td>15/05/2019</td>
-                            <td>Juan Silvestre</td>
-                            <td>15/05/2019</td>
-                            <td><button type="button" class="btn btn-primary">Actualizar</button></td>
-                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-
-
+                            <td><%=producto.getNombre()%></td>
+                            <td><%=producto.getDescripcion()%></td>
+                            <td><%=producto.getUnidad()%></td>
+                            <td><%=producto.getExistencia()%></td>
+                            <td><%=producto.getIdAreaS()%></td>
+                            <%
+                                String status = "";
+                                if (producto.isStatusProd()) {
+                                    status = "Activo";
+                                } else {
+                                    status = "Inactivo";
+                                }
+                            %>
+                            <td><%=status%></td>
+                            <td><%=producto.getFechaAlta()%></td>
+                            <td>Aqui validas crisitan</td>
+                            <td><%=fechaActual%></td>
+                            <td><a href="ControllProductoCRUD?action=update"><button type="button" class="btn btn-primary">Actualizar</button></a></td>
+                            <td><a href="ControllProductoCRUD?action=delete"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
                         </tr>
+                        <%                                }
+                        %>
+
                     </table>
                 </div>             
             </div>

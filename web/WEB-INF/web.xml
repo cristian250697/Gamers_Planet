@@ -19,6 +19,12 @@
     <servlet>
         <servlet-name>ModificaUsers</servlet-name>
         <servlet-class>servlet.ModificaUsers</servlet-class>
+        <servlet-name>ClienteServlet</servlet-name>
+        <servlet-class>servlet.ClienteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControllProdcutoCRUD</servlet-name>
+        <servlet-class>controladores.ControllProdcutoCRUD</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -39,6 +45,14 @@
     <servlet-mapping>
         <servlet-name>ModificaUsers</servlet-name>
         <url-pattern>/ModificaUsers</url-pattern>
+     </servlet-mapping>
+     <servlet-mapping>
+        <servlet-name>ClienteServlet</servlet-name>
+        <url-pattern>/ClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllProdcutoCRUD</servlet-name>
+        <url-pattern>/ControllProdcutoCRUD</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
