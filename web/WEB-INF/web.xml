@@ -12,6 +12,14 @@
         <servlet-name>ControllProductoDetalle</servlet-name>
         <servlet-class>controladores.ControllProductoDetalle</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegistroUsuariosServlet</servlet-name>
+        <servlet-class>servlet.RegistroUsuariosServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificaUsers</servlet-name>
+        <servlet-class>servlet.ModificaUsers</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>ControllProductoDetalle</servlet-name>
         <url-pattern>/ControllProductoDetalle</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroUsuariosServlet</servlet-name>
+        <url-pattern>/RegistroUsuariosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificaUsers</servlet-name>
+        <url-pattern>/ModificaUsers</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

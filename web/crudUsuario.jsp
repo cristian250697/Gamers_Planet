@@ -4,6 +4,9 @@
     Author     : trebo
 --%>
 
+<%@page import="entidades.Usuario"%>
+<%@page import="java.util.LinkedList"%>
+<%@page import="controladores.ControladorUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
 <link rel="stylesheet" href="table.css">
@@ -26,15 +29,13 @@
                 <h1>Alta Usuarios</h1>
                 <p>Usuarios <strong>(Empleados)</strong></p>
 
-                <ul>
-                    <li>Edita con responsabilidad.</li> 
-                    <li>Trabaja duro.</li>
-                </ul>
 
                 <div id="table" class="table-editable">
                     <span class="table-add glyphicon glyphicon-plus"></span>
+                    <form action="Modify.jsp" method="POST">
                     <table class="table">
                         <tr>
+                            <th>id</th>
                             <th>Nombre</th>
                             <th>Apellido</th>
                             <th>Telefono</th>
@@ -42,22 +43,47 @@
                             <th>Contraseña</th>
                             <th>Dirección</th>
                             <th>Rol</th>
-                            <td><a href="usuarioAdd.jsp"><button type="button" class="btn btn-success">Añadir</button></a></td>
+                            <td><a href="usuarioAdd.jsp"><button type="button"  class="btn btn-success">Añadir</button></a></td>
+                             <td><button type='submit'  value=''  class='btn btn-primary'>Actualizar</button></td>
                         </tr>
                         <tr>
-                            <td>Juan Silvestre</td>
-                            <td>Ramírez Becerra</td>
-                            <td>4774408656</td>
-                            <td>juansilvestre@gmail.com</td>
-                            <td>ASJ3343#joYw</td>
-                            <td>Valle Hermoso, Bricho #213, Léon, GTO</td>
-                            <td>Administrador</td>
-                            <td><button type="button" class="btn btn-primary">Actualizar</button></td>
-                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-
+                            
+                            <%
+                                ControladorUsuario usuario = new ControladorUsuario();
+                            LinkedList<Usuario> lista = usuario.MostrarUsuario();
+                            for (int i=0;i<lista.size();i++)
+                            {
+                                String rol="";
+                                if(lista.get(i).getStatusRol()==0){
+                                    rol="administrador";
+                                }else if(lista.get(i).getStatusRol()==1){
+                                    rol="usuario";
+                                }else{
+                                    rol="cliente";
+                                }
+                               out.println("<tr>");
+                               out.println("<td>"+lista.get(i).getIdUsuario()+"</td>");
+                               out.println("<td>"+lista.get(i).getNombre()+"</td>");
+                               out.println("<td>"+lista.get(i).getApellido()+"</td>");
+                               out.println("<td>"+lista.get(i).getTelefono()+"</td>");
+                               out.println("<td>"+lista.get(i).getCorreo()+"</td>");
+                               out.println("<td>"+lista.get(i).getContrasenia()+"</td>");
+                               out.println("<td>"+lista.get(i).getDireccion()+"</td>");
+                               out.println("<td>"+rol+"</td>"); 
+                               out.println("<input type='hidden' name='accion' value='0'");                                                              
+                               out.println("<input type='text' name='id' value='"+lista.get(i).getIdUsuario()+"'>");                              
+                               out.println("<td><button type='submit' name='identificador' value='" +lista.get(i).getIdUsuario()+"'  onclick='this.form.action=\"RegistroUsuariosServlet\"' class='btn btn-danger' >Eliminar</button></td>");                              
+                            %>
+                            
+                             
+                               <%
+                            out.println("</tr>");
+                            }
+%>
 
                         </tr>
                     </table>
+                    </form>
                 </div>             
             </div>
         </div>
