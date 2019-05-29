@@ -4,6 +4,13 @@
     Author     : trebo
 --%>
 
+<<<<<<< HEAD
+=======
+<%@page import="controladores.ClienteDAO"%>
+<%@page import="entidades.Cliente"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+>>>>>>> master
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
 <link rel="stylesheet" href="table.css">
@@ -44,6 +51,7 @@
                             <th>Estatus</th>
                             <td><a href="clienteAdd.jsp"><button type="button" class="btn btn-success">Añadir</button></a></td>
                         </tr>
+<<<<<<< HEAD
                         <tr>
                             <td>Juan Silvestre</td>
                             <td>Ramírez Becerra</td>
@@ -57,6 +65,28 @@
 
 
                         </tr>
+=======
+                        <%
+                            List<Cliente> clientes = new ClienteDAO().getAllCliente();
+                            if(clientes != null){
+                                for (Cliente clien : clientes) {
+                        %>
+                        <tr>
+                            <td><%=clien.getNombre() %></td>
+                            <td><%=clien.getApellidos()%></td>
+                            <td><%=clien.getTelefono() %></td>
+                            <td><%=clien.getCorreo() %></td>
+                            <td><%=clien.getContrasenia() %></td>
+                            <td><%=clien.getDireccion() %></td>
+                            <td><%=clien.getStatusCliente() %></td>
+                            <td><button type="button" class="btn btn-primary">Actualizar</button></td>
+                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
+                        </tr>
+                        <%
+                                }
+                            }
+                        %>
+>>>>>>> master
                     </table>
                 </div>             
             </div>
