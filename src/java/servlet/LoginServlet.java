@@ -5,10 +5,16 @@
  */
 package servlet;
 
+import com.google.gson.Gson;
 import controladores.ControladorUsuario;
-import entidades.Usuario;
+import web.Usuario;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -73,18 +79,52 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        String output ="";
+        String json="";
         String usuario = request.getParameter("username");
         String contrasenia = request.getParameter("password");
         HttpSession sesion;
+        try {
+            URL url = new URL("http://localhost:8080/Gamers_Planet/webresources/web.usuario/" + usuario);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
 
-        ControladorUsuario cUsr = new ControladorUsuario();
-        Usuario usr = cUsr.buscarUsuario(Integer.parseInt(usuario));
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException("Failed : HTTP error code : "
+                        + conn.getResponseCode());
+             }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                    (conn.getInputStream())));
+
+        
+          
+            while ((output = br.readLine()) != null) {
+                json+= output;
+            }
+
+            conn.disconnect();
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+
+            e.printStackTrace();
+
+        }
+        System.out.println(json);
+        Gson g = new Gson();
+        Usuario usr = g.fromJson(json, Usuario.class);
+        
+        System.out.println(usr.getStatusRol()+" Rol");
+        System.out.println(usr.getStatusUsr()+" Estatus");
+        System.out.println(usr.toString());
 
         if (usr != null) {                                    // Si existe el usuario
             if (usr.getContrasenia().equals(contrasenia)) {   // Si la contraseña es válida
 
-                if (usr.getStatusUsuario() == 1) {            // Si el usuario está activo
+                if (usr.getStatusUsr()) {            // Si el usuario está activo
                     // Administrador
                     if (usr.getStatusRol() == 0) {
                         sesion = request.getSession(true);
