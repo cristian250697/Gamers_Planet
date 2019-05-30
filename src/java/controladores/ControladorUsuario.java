@@ -73,7 +73,7 @@ public class ControladorUsuario {
      }
 
     public Usuario buscarUsuario(int idUsuario) {
-        String sql = "SELECT * FROM usuario WHERE idUsuario = " + idUsuario;
+        String sql = "SELECT * FROM usuario where idUsuario=1";
         ResultSet query = conexion.ejecutarSQLSelect(sql);
 
         try {

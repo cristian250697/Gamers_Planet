@@ -126,7 +126,7 @@ public class RegistroUsuariosServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Las contraseñas no coinciden</h1>");
-            out.println("<button  >Regresar</button>");
+            out.println("<a href='/Gamers_Planet/usuarioAdd.jsp'><button >Regresar</button></a>");
             out.println("</body>");
             out.println("</html>");
         } 

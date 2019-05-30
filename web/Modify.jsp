@@ -28,7 +28,7 @@
             <form action="ModificaUsers" method="post">
                  <div class="form-group"> <!--Nombre-->
                     <label for="id" class="control-label">id </label>
-                    <input type="text" class="form-control" id="id" name="ident">
+                    <input type="text" class="form-control" id="id" name="ident" value="<% request.getParameter("actUser"); %>">
                 </div>    
                 <div class="form-group"> <!--Nombre-->
                     <label for="name_id" class="control-label">Nombre </label>
