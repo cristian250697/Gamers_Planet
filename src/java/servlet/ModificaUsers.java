@@ -88,6 +88,7 @@ public class ModificaUsers extends HttpServlet {
          
          if(n.actualizaUsuario(user)){
             response.sendRedirect("/Gamers_Planet/crudUsuario.jsp");
+            
          }else{
             try (PrintWriter out = response.getWriter()) {
             out.println("<!DOCTYPE html>");

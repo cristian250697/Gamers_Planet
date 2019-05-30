@@ -73,7 +73,7 @@ public class ControladorUsuario {
      }
 
     public Usuario buscarUsuario(int idUsuario) {
-        String sql = "SELECT * FROM usuario where idUsuario=1";
+        String sql = "SELECT * FROM usuario where idUsuario="+idUsuario;
         ResultSet query = conexion.ejecutarSQLSelect(sql);
 
         try {
@@ -116,7 +116,6 @@ public class ControladorUsuario {
     }
 
     public boolean actualizaUsuario(Usuario usuario) {
-        System.out.println(usuario.getNombre());
         String sql = "UPDATE usuario SET nombre= '"+usuario.getNombre()+"', "
                                       + "apellidos = '"+usuario.getApellido()+"',"
                                       + "telefono = '" + usuario.getTelefono() + "',"
