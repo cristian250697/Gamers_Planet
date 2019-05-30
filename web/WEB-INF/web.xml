@@ -8,6 +8,10 @@
         <servlet-name>ControllProducts</servlet-name>
         <servlet-class>controladores.ControllProducts</servlet-class>
     </servlet>
+        <servlet>
+        <servlet-name>ControllProductoInsert</servlet-name>
+        <servlet-class>controladores.ControllProductoInsert</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>ControllProductoDetalle</servlet-name>
         <servlet-class>controladores.ControllProductoDetalle</servlet-class>
@@ -79,6 +83,10 @@
     <servlet-mapping>
         <servlet-name>ControllProductoForm</servlet-name>
         <url-pattern>/ControllProductoForm</url-pattern>
+    </servlet-mapping>
+        <servlet-mapping>
+        <servlet-name>ControllProductoInsert</servlet-name>
+        <url-pattern>/ControllProductoInsert</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LogOutServlet</servlet-name>

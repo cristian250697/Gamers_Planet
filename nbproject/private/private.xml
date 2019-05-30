@@ -3,8 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/crist/Desktop/GitHub/Gamers_Planet/src/java/servlet/Salidas.java</file>
-            <file>file:/C:/Users/crist/Desktop/GitHub/Gamers_Planet/web/productoDetalle.jsp</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/src/java/entidades/Producto.java</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/web/productosAdd.jsp</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/src/java/controladores/ControllProductoForm.java</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/web/crudProductos.jsp</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/web/compraProducto.jsp</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/web/index.html</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/src/java/models/modelProducto.java</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/src/java/controladores/ControllProductoAdd.java</file>
+            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/src/java/controladores/AccesoBD.java</file>
         </group>
     </open-files>
 </project-private>
