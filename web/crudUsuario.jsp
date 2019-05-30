@@ -36,7 +36,7 @@
                 
                 <div id="table" class="table-editable">
                     <span class="table-add glyphicon glyphicon-plus"></span>
-                    <form action="Modify" method="POST">
+                    <form action="Modify.jsp" method="POST">
                     <table class="table">
                         <tr>
                             <th>id</th>
