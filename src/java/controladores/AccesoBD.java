@@ -54,6 +54,7 @@ public class AccesoBD {
             sentencia.executeUpdate(sql);
             return true;
         } catch (SQLException ex) {
+            System.out.println("Error: "+ex);
             return false;
         }
     }
