@@ -106,7 +106,7 @@ ALTER TABLE cliente
 ADD FOREIGN KEY (idUsrMod) References usuario(idUsuario)
 ON DELETE CASCADE ON UPDATE CASCADE;
 
-ALTER TABLE cliente
+/*ALTER TABLE cliente
 ADD FOREIGN KEY (idMovimiento) REFERENCES movimiento(idMovimiento)
 ON DELETE CASCADE ON UPDATE CASCADE;/*tal vez está mal esta proque es  1 a n y solo va en movimientos*/
 /*Tabla movimientos*/
