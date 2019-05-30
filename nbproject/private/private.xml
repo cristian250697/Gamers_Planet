@@ -5,11 +5,12 @@
         <group>
             <file>file:/C:/Users/52477/Documents/Gamers_Planet/web/Modify.jsp</file>
             <file>file:/C:/Users/52477/Documents/Gamers_Planet/src/java/servlet/ModificaUsers.java</file>
-            <file>file:/C:/Users/52477/Documents/Gamers_Planet/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/52477/Documents/Gamers_Planet/src/java/servlet/ClienteServlet.java</file>
+            <file>file:/C:/Users/52477/Documents/Gamers_Planet/src/java/controladores/ClienteDAO.java</file>
             <file>file:/C:/Users/52477/Documents/Gamers_Planet/src/java/servlet/RegistroUsuariosServlet.java</file>
             <file>file:/C:/Users/52477/Documents/Gamers_Planet/web/usuarioAdd.jsp</file>
             <file>file:/C:/Users/52477/Documents/Gamers_Planet/web/crudUsuario.jsp</file>
-            <file>file:/C:/Users/52477/Documents/Gamers_Planet/src/java/controladores/ControladorUsuario.java</file>
+            <file>file:/C:/Users/52477/Documents/Gamers_Planet/src/java/entidades/Cliente.java</file>
         </group>
     </open-files>
 </project-private>
