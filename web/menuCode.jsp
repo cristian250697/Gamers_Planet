@@ -23,7 +23,7 @@
                             <a style="text-decoration: none;" href="crudUsuario.jsp">Usuario</a>
                         </li>
                         <li>
-                            <a style="text-decoration: none;" href="crudClientes.jsp">Cliente</a>
+                            <a style="text-decoration: none;" href="ClienteServlet">Cliente</a>
                         </li>
                         <li>
                             <a style="text-decoration: none;" href="ControllProdcutoCRUD">Producto</a>

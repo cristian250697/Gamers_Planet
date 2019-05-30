@@ -30,6 +30,23 @@ public class Cliente {
         this.direccion = direccion;
     }
 
+    public Cliente(int idCliente, int statusCliente, int idMovimiento, int idUsrAlta, int idUsrMod, String nombre, String apellidos, String telefono, String correo, String contrasenia, String direccion, String fechaAlta, String fechaMod) {
+        this.idCliente = idCliente;
+        this.statusCliente = statusCliente;
+        this.idMovimiento = idMovimiento;
+        this.idUsrAlta = idUsrAlta;
+        this.idUsrMod = idUsrMod;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.contrasenia = contrasenia;
+        this.direccion = direccion;
+        this.fechaAlta = fechaAlta;
+        this.fechaMod = fechaMod;
+    }
+    
+
     public int getIdCliente() {
         return idCliente;
     }

@@ -134,7 +134,6 @@ public class modelProducto {
                     producto.setPrecio(response.getFloat(12));
 
                 }
-                conexion.cerrarConexion();
 
             } catch (SQLException e) {
                 conexion.cerrarConexion();
@@ -179,15 +178,15 @@ public class modelProducto {
 //
 //    }
 //
-//    public boolean eliminarUsuario(int idUsuario) {
-//        String query = "UPDATE usuario SET statusUsr = 0 WHERE idUsuario =" + idUsuario + ";";
-//
-//        if (conexion.ejecutarSQL(query)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
+    public boolean eliminarProducto(int idProducto) {
+        String query = "UPDATE producto SET statusProd = 0 WHERE idProducto ="+idProducto;
+        System.out.println("New query: "+query);
+        if (conexion.ejecutarSQL(query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 //
 //    public boolean actualizaUsuario(Usuario usuario) {
 //

@@ -42,24 +42,26 @@
                             <th>Descripción</th>
                             <th>Unidad(s)</th>
                             <th>Existencia</th>
+                            <th>Precio</th>
                             <th>Area</th>
                             <th>Estatus producto</th>
                             <th>Fecha de alta</th>
                             <th>Usuario ultima modificación</th>
                             <th>Fecha ultima modificación</th>
-                            <td><a href="ControllProductoCRUD?action=add"><button type="button" class="btn btn-success">Añadir</button></a></td>
+                            <td><a href="ControllProductoForm?action=add"><button type="button" class="btn btn-success">Añadir</button></a></td>
                         </tr>
                         <%
                             ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("Productos");
-                            Timestamp fechaActual = (Timestamp) request.getAttribute("fecha");
+                           // Timestamp fechaActual = (Timestamp) request.getAttribute("fecha");
                             for (Producto producto : productos) {
 
                         %>
                         <tr>
                             <td><%=producto.getNombre()%></td>
-                            <td><%=producto.getDescripcion()%></td>
+                            <td class="celda"><%=producto.getDescripcion()%></td>
                             <td><%=producto.getUnidad()%></td>
                             <td><%=producto.getExistencia()%></td>
+                            <td>$<%=producto.getPrecio()%></td>
                             <td><%=producto.getIdAreaS()%></td>
                             <%
                                 String status = "";
@@ -72,9 +74,9 @@
                             <td><%=status%></td>
                             <td><%=producto.getFechaAlta()%></td>
                             <td>Aqui validas crisitan</td>
-                            <td><%=fechaActual%></td>
-                            <td><a href="ControllProductoCRUD?action=update"><button type="button" class="btn btn-primary">Actualizar</button></a></td>
-                            <td><a href="ControllProductoCRUD?action=delete"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                            <td><%=producto.getFechaMod()%></td>
+                            <td><a href="ControllProductoForm?action=update&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-primary">Actualizar</button></a></td>
+                            <td><a href="ControllProductoForm?action=delete&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
                         </tr>
                         <%                                }
                         %>

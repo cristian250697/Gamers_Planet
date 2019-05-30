@@ -28,6 +28,10 @@
         <servlet-name>ControllProdcutoCRUD</servlet-name>
         <servlet-class>controladores.ControllProdcutoCRUD</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ControllProductoForm</servlet-name>
+        <servlet-class>controladores.ControllProductoForm</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>ControllProdcutoCRUD</servlet-name>
         <url-pattern>/ControllProdcutoCRUD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllProductoForm</servlet-name>
+        <url-pattern>/ControllProductoForm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
