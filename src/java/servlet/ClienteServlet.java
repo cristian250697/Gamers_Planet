@@ -44,13 +44,14 @@ public class ClienteServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         cdao = new ClienteDAO();
-        ArrayList<Cliente> clientes = cdao.getAllCliente();
+        ArrayList<Cliente> clientes = new ArrayList<>();
         if (request.getParameter("action") != null) {//Si se accede desde la url redirecciona al CRUDClientes
             if ("delete".equals(request.getParameter("action"))) {
                 Cliente cliente = cdao.readCliente((Integer.parseInt(request.getParameter("idCliente"))));
                 if (cliente != null) {
                     cdao.deleteCliente((Integer.parseInt(request.getParameter("idCliente"))));
                 }
+                clientes = cdao.getAllCliente();
                 if (clientes.isEmpty()) {
                     response.sendRedirect("/crudClientes.jsp");
                 } else {
@@ -67,6 +68,7 @@ public class ClienteServlet extends HttpServlet {
                         view.forward(request, response);
                     }
                 } else {
+                    clientes = cdao.getAllCliente();
                     if (clientes.isEmpty()) {//Si no hay registros
                         response.sendRedirect("/crudClientes.jsp");
                     } else {//Si hay registros los envía al CRUDClientes para llenar la tabla
@@ -99,6 +101,7 @@ public class ClienteServlet extends HttpServlet {
                     );
                     cdao.updateCliente(cliente);
                 }
+                clientes = cdao.getAllCliente();
                 if (clientes.isEmpty()) {//Si no hay registros
                     response.sendRedirect("/crudClientes.jsp");
                 } else {//Si hay registros los envía al CRUDClientes para llenar la tabla
@@ -108,6 +111,7 @@ public class ClienteServlet extends HttpServlet {
                 }
             }
         } else {
+            clientes = cdao.getAllCliente();
             if (clientes.isEmpty()) {//Si no hay registros
                 response.sendRedirect("/crudClientes.jsp");
             } else {//Si hay registros los envía al CRUDClientes para llenar la tabla
