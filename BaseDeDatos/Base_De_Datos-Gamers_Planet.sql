@@ -56,6 +56,14 @@ idMovimiento int not null,
 unidades int not null
 );
 
+CREATE TABLE movimientoP(
+idMovimientoProducto int auto_increment not null PRIMARY KEY,
+idUsuario int not null,
+tipoMovimiento varchar(100) not null,
+fechaMov timestamp DEFAULT current_timestamp
+);
+drop  table movimientoP;
+
 CREATE TABLE movimiento(
 idMovimiento int auto_increment not null PRIMARY KEY,
 idCliente int not null,
@@ -98,13 +106,9 @@ ALTER TABLE cliente
 ADD FOREIGN KEY (idUsrMod) References usuario(idUsuario)
 ON DELETE CASCADE ON UPDATE CASCADE;
 
-use Gamers_Planet;
-ALTER TABLE cliente DROP FOREIGN KEY idMovimiento;
-ALTER TABLE cliente DROP INDEX idMovimiento;
-/*
 ALTER TABLE cliente
 ADD FOREIGN KEY (idMovimiento) REFERENCES movimiento(idMovimiento)
-ON DELETE CASCADE ON UPDATE CASCADE;tal vez está mal esta proque es  1 a n y solo va en movimientos*/
+ON DELETE CASCADE ON UPDATE CASCADE;/*tal vez está mal esta proque es  1 a n y solo va en movimientos*/
 /*Tabla movimientos*/
 ALTER TABLE movimiento
 ADD FOREIGN KEY (idCliente) REFERENCES cliente(idCliente)
@@ -167,3 +171,5 @@ VALUES ('Audifonos BEAT','Audifonos BEAT BY DOCTOR DREE hard sound','1 pz',10,1,
 SELECT * FROM usuario;
 select * from producto;
 select * from areaAlmacen;
+
+select * from movimientoP
