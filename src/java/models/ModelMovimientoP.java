@@ -42,14 +42,14 @@ public class ModelMovimientoP {
 
     public LinkedList getMovimientos() {
         String sql = "SELECT * FROM movimientoP";
-        LinkedList<Movimiento> movimientos = new LinkedList<Movimiento>();
+        LinkedList<MovimientoP> movimientos = new LinkedList<MovimientoP>();
         ResultSet query = conexion.ejecutarSQLSelect(sql);
 
         try {
             while (query.next()) {
 
                 movimientos.add(
-                        new Movimiento(
+                        new MovimientoP(
                                 query.getInt(1),
                                 query.getInt(2),
                                 query.getString(3),

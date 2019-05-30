@@ -1,5 +1,6 @@
 package controladores;
 
+import entidades.MovimientoP;
 import entidades.Producto;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import models.ModelMovimientoP;
 import models.modelProducto;
 
 public class ControllProductoInsert extends HttpServlet {
@@ -18,6 +20,8 @@ public class ControllProductoInsert extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             try {
                 modelProducto productoM = new modelProducto();
+                ModelMovimientoP movimientoP = new ModelMovimientoP();
+
                 String nombre = request.getParameter("name");
                 String descripcion = request.getParameter("descrip");
                 String unidad = request.getParameter("unidades");
@@ -38,6 +42,8 @@ public class ControllProductoInsert extends HttpServlet {
                 float precio = Float.parseFloat(request.getParameter("precio"));
 
                 Producto producto = new Producto();
+                MovimientoP movP = new MovimientoP();
+
                 producto.setNombre(nombre);
                 producto.setDescripcion(descripcion);
                 producto.setUnidad(unidad);
@@ -49,15 +55,18 @@ public class ControllProductoInsert extends HttpServlet {
                 producto.setIdUsrMod(idUsrMod);
                 producto.setFechaMod(fechaMod);
                 producto.setPrecio(precio);
-               
+
+                movP.setIdUsuario(1);
+                movP.setTipoMovimiento("Se añadio el producto: " + producto.getNombre());
 
                 if (productoM.crearProducto(producto)) {
+                    movimientoP.crearMovimiento(movP);
                     response.sendRedirect("ControllProdcutoCRUD");
                 } else {
                     out.println("No se creo producto");
                 }
             } catch (Exception e) {
-                System.out.println("Error contollProductInsert: "+e);
+                System.out.println("Error contollProductInsert: " + e);
             }
 
         }

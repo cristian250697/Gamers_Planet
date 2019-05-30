@@ -4,6 +4,8 @@
     Author     : trebo
 --%>
 
+<%@page import="models.ModelMovimientoP"%>
+<%@page import="entidades.MovimientoP"%>
 <%@page import="models.ModelMovimiento"%>
 <%@page import="entidades.Movimiento"%>
 <%@page import="java.util.LinkedList"%>
@@ -44,24 +46,22 @@
                         </tr>
                         <%
 
-                            LinkedList<Movimiento> movimientos;
+                            LinkedList<MovimientoP> movimientos;
 
-                            ModelMovimiento modelo = new ModelMovimiento();
+                            ModelMovimientoP modelo = new ModelMovimientoP();
 
                             movimientos = modelo.getMovimientos();
 
                             for (int i = 0; i < movimientos.size(); i++) {
 
-                           
-                            
 
                         %>
-                                                <tr>
-                            <td>movimientos.get(i).getIdMovimiento()</td>
-                            <td>movimientos.get(i).getIdCliente()</td>
-                            <td>movimientos.get(i).getTipoMovimiento()</td>
-                            <td>movimientos.get(i).getFechaMovimiento()</td>                          
-                            <td><a href=""<button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                        <tr>
+                            <td><%=movimientos.get(i).getIdMovimientoProducto()%></td>
+                            <td><%=movimientos.get(i).getIdUsuario()%></td>
+                            <td><%=movimientos.get(i).getTipoMovimiento()%></td>
+                            <td><%=movimientos.get(i).getFechaMov()%></td>                          
+                            <td><a href="ControllMovimientoP?id=<%=movimientos.get(i).getIdMovimientoProducto()%>"<button type="button" class="btn btn-danger">Eliminar</button></a></td>
                         </tr>
                         <%}%>
                     </table>
