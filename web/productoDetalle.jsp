@@ -4,6 +4,7 @@
     Author     : trebo
 --%>
 
+<%@page import="entidades.Usuario"%>
 <%@page import="entidades.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
@@ -17,14 +18,20 @@
         <title>GAMERS PLANET</title>
     </head>
     <body>
+        <%
+
+            HttpSession sesion = request.getSession();
+            Usuario usr = (Usuario) sesion.getAttribute("usuario");
+
+
+        %>
         <!-- Sidebar  -->
         <%@ include file="menuCode.jsp" %>  
         <!-- Page Content  -->
         <div id="content">
             <%@ include file="menuToolBar.jsp" %>  
             <!--Aqui poner contenido de vistas-->
-            <%
-                Producto producto = (Producto) request.getAttribute("Producto");
+            <%                Producto producto = (Producto) request.getAttribute("Producto");
             %>
             <div class="card">
                 <!--Carousel Wrapper-->
@@ -75,24 +82,31 @@
             </div>
             <div class="card_comp" style="float: left;">
                 <div class="container">
-                    <h4 style="text-align: center"><b><%=producto.getNombre()%></b></h4> 
-                    <span style="
-                          margin:19%;                        
-                          font-family: monospace;
-                          font-size: 60;
-                          font-weight: lighter;
+                    <form method="post" action="Salidas">
+                        <h4 style="text-align: center"><b><%=producto.getNombre()%></b></h4> 
 
-                          ">$<%=producto.getPrecio()%></span>
-                    <p style="margin-top: 40px"><%=producto.getIdAreaS()%></p>
-                    <p style="margin-top: 40px"><%=producto.getDescripcion()%></p>
-                    <div>
-                        <label class="box" for="quantity">Unidades: </label>
-                        <input id="quantity" type="number" value="1" min="1" max="1000" step="1"/>
-                    </div>
-                    <div style="text-align: center; margin: 20px">
-                        <button type="button" class="btn btn-primary">Comprar ahora</button>
-                        <button type="button"  class="btn btn-success">Añadir a carrito</button>
-                    </div>
+                        <span style="
+                              margin:19%;                        
+                              font-family: monospace;
+                              font-size: 60;
+                              font-weight: lighter;
+
+                              ">$<%=producto.getPrecio()%></span>
+                        <p style="margin-top: 40px"><%=producto.getIdAreaS()%></p>
+                        <p style="margin-top: 40px"><%=producto.getDescripcion()%></p>
+                        <div>
+                            <label class="box" for="quantity">Unidades: </label>
+                            <input id="quantity" type="number" value="1" min="1" max="1000" step="1" name="cantidadProducto"/>
+                        </div>
+                        <div style="text-align: center; margin: 20px">
+                            <input type="hidden" value="<% out.print(producto.getIdProducto());%>" name="idProducto"/>
+                            
+                            
+                            <button type="submit" class="btn btn-primary">Comprar ahora</button>
+
+                            <!--<a href="#myModal" class="trigger-btn" data-toggle="modal"><button type="button"  class="btn btn-success">Añadir a carrito</button></a> -->
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

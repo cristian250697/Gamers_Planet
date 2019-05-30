@@ -65,7 +65,7 @@
                     <button type="submit" class="btn btn-primary">Done!</button>
                 </div>
                 
-                               <input type='hidden' name='accion' value='1' 
+                <input type='hidden' name='accion' value='1' >
 
             </form>
         </div>

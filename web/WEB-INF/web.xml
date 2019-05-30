@@ -36,6 +36,10 @@
         <servlet-name>LogOutServlet</servlet-name>
         <servlet-class>servlet.LogOutServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Salidas</servlet-name>
+        <servlet-class>servlet.Salidas</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
@@ -71,6 +75,10 @@
     <servlet-mapping>
         <servlet-name>LogOutServlet</servlet-name>
         <url-pattern>/LogOutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Salidas</servlet-name>
+        <url-pattern>/Salidas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
