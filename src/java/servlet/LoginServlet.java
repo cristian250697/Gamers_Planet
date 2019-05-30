@@ -88,16 +88,19 @@ public class LoginServlet extends HttpServlet {
                     // Administrador
                     if (usr.getStatusRol() == 0) {
                         sesion = request.getSession(true);
+                        sesion.setMaxInactiveInterval(60*30);
                         sesion.setAttribute("usuario", usr);
                         response.sendRedirect("perfilUsuario.jsp");
                         // Empleado
                     } else if (usr.getStatusRol() == 1) {
                         sesion = request.getSession(true);
+                        sesion.setMaxInactiveInterval(60*30);
                         sesion.setAttribute("usuario", usr);
                         response.sendRedirect("perfilUsuario.jsp");
                         // Cliente
                     } else if (usr.getStatusRol() == 2) {
                         sesion = request.getSession(true);
+                        sesion.setMaxInactiveInterval(60*30);
                         sesion.setAttribute("usuario", usr);
                         response.sendRedirect("perfilUsuario.jsp");
                     }
