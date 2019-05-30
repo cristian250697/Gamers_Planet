@@ -4,6 +4,7 @@
     Author     : trebo
 --%>
 
+<%@page import="entidades.Usuario"%>
 <%@page import="models.ModelMovimientoP"%>
 <%@page import="entidades.MovimientoP"%>
 <%@page import="models.ModelMovimiento"%>
@@ -25,6 +26,9 @@
         <%@ include file="menuCode.jsp" %>  
         <!-- Page Content  -->
         <div id="content">
+            <%
+                Usuario usr = (Usuario) request.getSession().getAttribute("usuario");    
+            %>
             <%@ include file="menuToolBar.jsp" %>  
             <!--Aqui poner contenido de vistas-->
             <div class="container">
@@ -61,7 +65,13 @@
                             <td><%=movimientos.get(i).getIdUsuario()%></td>
                             <td><%=movimientos.get(i).getTipoMovimiento()%></td>
                             <td><%=movimientos.get(i).getFechaMov()%></td>                          
+                            <%
+                                if(usr.getStatusRol() == 0){
+                                %>
                             <td><a href="ControllMovimientoP?id=<%=movimientos.get(i).getIdMovimientoProducto()%>"<button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                            <%
+                                }
+                            %>
                         </tr>
                         <%}%>
                     </table>

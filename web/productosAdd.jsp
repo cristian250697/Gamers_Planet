@@ -4,6 +4,7 @@
     Author     : trebo
 --%>
 
+<%@page import="entidades.Usuario"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.sql.Timestamp"%>
@@ -22,6 +23,11 @@
         <!-- Sidebar  -->
         <%@ include file="menuCode.jsp" %>  
         <!-- Page Content  -->
+        <%
+        
+        Usuario usr = (Usuario) request.getSession().getAttribute("usuario");
+        
+        %>
         <div id="content">
             <%@ include file="menuToolBar.jsp" %>  
             <!--Aqui poner contenido de vistas-->
@@ -90,7 +96,7 @@
                 <input type="hidden" name="id_userM" value="<%=producto.getIdUsrMod()%>">
                 <div class="form-group"> 
                     <label for="dir_id" class="control-label">Usuario utlima modificación</label>
-                    <input type="number" class="form-control" id="dir_id" name="userM" placeholder="Usuario" value="<%=producto.getIdUsrModS()%>" readonly>
+                    <input type="number" class="form-control" id="dir_id" name="userM" placeholder="Usuario" value="<%=usr.getIdUsuario() %>" readonly>
                 </div>   
                 <div class="form-group"> 
                     <label for="date_act_id" class="control-label">Fecha ultima modificación</label>

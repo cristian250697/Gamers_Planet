@@ -4,6 +4,7 @@
     Author     : trebo
 --%>
 
+<%@page import="entidades.Usuario"%>
 <%@page import="entidades.Area"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -24,6 +25,9 @@
         <!-- Sidebar  -->
         <%@ include file="menuCode.jsp" %>  
         <!-- Page Content  -->
+        <%
+            Usuario usr = (Usuario) request.getSession().getAttribute("usuario");
+        %>
         <div id="content">
             <%@ include file="menuToolBar.jsp" %>  
             <!--Aqui poner contenido de vistas-->
@@ -79,7 +83,7 @@
                 </div>
                 <div class="form-group"> 
                     <label for="dirA_id" class="control-label">Usuario Alta producto</label>
-                    <input type="number" class="form-control" id="dirA_id" name="userA" placeholder="Usuario" value="1" readonly>
+                    <input type="number" class="form-control" id="dirA_id" name="userA" placeholder="Usuario" value="<%=usr.getIdUsuario() %>" readonly>
                 </div>   
                 <div class="form-group"> 
                     <label for="date_alt_id" class="control-label">Fecha de alta</label>

@@ -34,7 +34,7 @@ public class AccesoBD {
             //con la cadena depende de la gestión de la base de datos a utilizar
             //El Driver se tiene que agregar al proyecto web en Llibraries
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gamers_Planet", "root", "");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gamers_Planet", "root", "MyNewPass");
             return true;
         } catch (ClassNotFoundException | SQLException ex) {
             return false;

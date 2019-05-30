@@ -2,6 +2,7 @@ package controladores;
 
 import entidades.MovimientoP;
 import entidades.Producto;
+import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Timestamp;
@@ -17,6 +18,8 @@ public class ControllProductoInsert extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        Usuario usr = (Usuario) request.getSession().getAttribute("usuario");
+        
         try (PrintWriter out = response.getWriter()) {
             try {
                 modelProducto productoM = new modelProducto();
@@ -56,7 +59,7 @@ public class ControllProductoInsert extends HttpServlet {
                 producto.setFechaMod(fechaMod);
                 producto.setPrecio(precio);
 
-                movP.setIdUsuario(1);
+                movP.setIdUsuario(usr.getIdUsuario());
                 movP.setTipoMovimiento("Se añadio el producto: " + producto.getNombre());
 
                 if (productoM.crearProducto(producto)) {
