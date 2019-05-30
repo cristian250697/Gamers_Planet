@@ -4,6 +4,7 @@
     Author     : trebo
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="controladores.ClienteDAO"%>
 <%@page import="entidades.Cliente"%>
 <%@page import="java.util.ArrayList"%>
@@ -48,26 +49,28 @@
                             <th>Estatus</th>
                             <td><a href="clienteAdd.jsp"><button type="button" class="btn btn-success">Añadir</button></a></td>
                         </tr>
-                        <%
-                            List<Cliente> clientes = new ClienteDAO().getAllCliente();
-                            if(clientes != null){
-                                for (Cliente clien : clientes) {
-                        %>
-                        <tr>
-                            <td><%=clien.getNombre() %></td>
-                            <td><%=clien.getApellidos()%></td>
-                            <td><%=clien.getTelefono() %></td>
-                            <td><%=clien.getCorreo() %></td>
-                            <td><%=clien.getContrasenia() %></td>
-                            <td><%=clien.getDireccion() %></td>
-                            <td><%=clien.getStatusCliente() %></td>
-                            <td><button type="button" class="btn btn-primary">Actualizar</button></td>
-                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-                        </tr>
-                        <%
-                                }
-                            }
-                        %>
+
+
+                        <c:set var="existe" value="false" />
+                        <c:if test = "${clientes != null}">
+
+                            <c:forEach var="cliente" items="${clientes}">
+                                <c:if test = "${cliente.getStatusCliente() == 1}">
+                                    <tr>
+                                        <td><c:out value="${cliente.getNombre()}"/></td>
+                                        <td><c:out value="${cliente.getApellidos()}"/></td>
+                                        <td><c:out value="${cliente.getTelefono()}"/></td>
+                                        <td><c:out value="${cliente.getCorreo()}"/></td>
+                                        <td><c:out value="${cliente.getContrasenia()}"/></td>
+                                        <td><c:out value="${cliente.getDireccion()}"/></td>
+                                        <td><c:out value="${cliente.getStatusCliente()}"/></td>
+                                        <td></td>
+                                        <td><a href="ClienteServlet?action=actualizar&idCliente=${cliente.getIdCliente()}"><button type="button" class="btn btn-primary">Actualizar</button></a></td>
+                                        <td><a href="ClienteServlet?action=delete&idCliente=${cliente.getIdCliente()}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                                    </tr>
+                                </c:if>
+                            </c:forEach>
+                        </c:if>
                     </table>
                 </div>             
             </div>

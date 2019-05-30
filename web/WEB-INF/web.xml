@@ -19,6 +19,8 @@
     <servlet>
         <servlet-name>ModificaUsers</servlet-name>
         <servlet-class>servlet.ModificaUsers</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ClienteServlet</servlet-name>
         <servlet-class>servlet.ClienteServlet</servlet-class>
     </servlet>

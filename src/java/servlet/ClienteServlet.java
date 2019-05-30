@@ -9,7 +9,7 @@ import controladores.ClienteDAO;
 import entidades.Cliente;
 import entidades.Usuario;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.servlet.RequestDispatcher;
@@ -26,12 +26,12 @@ import javax.servlet.http.HttpSession;
 public class ClienteServlet extends HttpServlet {
 
     private ClienteDAO cdao;
-    
-    public ClienteServlet(){
+
+    public ClienteServlet() {
         super();
         //cdao = new ClienteDAO();
     }
-    
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -43,22 +43,86 @@ public class ClienteServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ClienteServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ClienteServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        cdao = new ClienteDAO();
+        ArrayList<Cliente> clientes = cdao.getAllCliente();
+        if (request.getParameter("action") != null) {//Si se accede desde la url redirecciona al CRUDClientes
+            if ("delete".equals(request.getParameter("action"))) {
+                Cliente cliente = cdao.readCliente((Integer.parseInt(request.getParameter("idCliente"))));
+                if (cliente != null) {
+                    cdao.deleteCliente((Integer.parseInt(request.getParameter("idCliente"))));
+                }
+                if (clientes.isEmpty()) {
+                    response.sendRedirect("/crudClientes.jsp");
+                } else {
+                    RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+                    request.setAttribute("clientes", clientes);
+                    view.forward(request, response);
+                }
+            } else if ("actualizar".equals(request.getParameter("action"))) {
+                if (request.getParameter("idCliente") != null) {
+                    Cliente cliente = cdao.readCliente(Integer.parseInt(request.getParameter("idCliente")));
+                    if (cliente != null) {//Si el cliente existe, llena los campos de clienteAdd
+                        RequestDispatcher view = request.getRequestDispatcher("/clienteAdd.jsp");
+                        request.setAttribute("cliente", cliente);
+                        view.forward(request, response);
+                    }
+                } else {
+                    if (clientes.isEmpty()) {//Si no hay registros
+                        response.sendRedirect("/crudClientes.jsp");
+                    } else {//Si hay registros los envía al CRUDClientes para llenar la tabla
+                        RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+                        request.setAttribute("clientes", clientes);
+                        view.forward(request, response);
+                    }
+                }
+                //response.sendRedirect("clienteAdd.jsp?idCliente=" + request.getParameter("idCliente"));
+                //out.println("Algo");
+            } else if ("update".equals(request.getParameter("action"))) {
+                if (request.getParameter("idCliente") != null) {
+                    int status = (request.getParameter("rolid") == null)
+                            ? 1 : Integer.parseInt(request.getParameter("rolid"));
+                    Calendar fechaActual = new GregorianCalendar();
+                    String hoy = fechaActual.get(Calendar.YEAR) + "-"
+                            + (fechaActual.get(Calendar.MONTH) + 1) + "-"
+                            + fechaActual.get(Calendar.DAY_OF_MONTH);
+                    Cliente original = new ClienteDAO().readCliente(Integer.parseInt(request.getParameter("idCliente")));
+                    Cliente cliente = new Cliente(
+                            Integer.parseInt(request.getParameter("idCliente")),
+                            status, 0, 1, 1, request.getParameter("name"),
+                            request.getParameter("last_name"),
+                            request.getParameter("telefono"),
+                            request.getParameter("correo"),
+                            request.getParameter("pass"),
+                            request.getParameter("dir"),
+                            original.getFechaAlta(),
+                            hoy
+                    );
+                    cdao.updateCliente(cliente);
+                }
+                if (clientes.isEmpty()) {//Si no hay registros
+                    response.sendRedirect("/crudClientes.jsp");
+                } else {//Si hay registros los envía al CRUDClientes para llenar la tabla
+                    RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+                    request.setAttribute("clientes", clientes);
+                    view.forward(request, response);
+                }
+            }
+        } else {
+            if (clientes.isEmpty()) {//Si no hay registros
+                response.sendRedirect("/crudClientes.jsp");
+            } else {//Si hay registros los envía al CRUDClientes para llenar la tabla
+                RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+                request.setAttribute("clientes", clientes);
+                view.forward(request, response);
+            }
+
         }
+
+//        RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+//        //request.setAttribute("clientes", cdao.getAllCliente());
+//        view.forward(request, response);
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -84,60 +148,59 @@ public class ClienteServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        HttpSession session = (HttpSession)request.getSession();
-        Usuario user = (Usuario)session.getAttribute("usuario");
+//        HttpSession session = (HttpSession) request.getSession();
+//        Usuario user = (Usuario) session.getAttribute("usuario");//Obtener el usuario de la sesión
         Cliente cliente = new Cliente();
         Calendar fechaActual = new GregorianCalendar();
-        String hoy = fechaActual.get(Calendar.YEAR)+"-"+(fechaActual.get(Calendar.MONTH)+1)+"-"+fechaActual.get(Calendar.DAY_OF_MONTH);
-        
+        String hoy = fechaActual.get(Calendar.YEAR) + "-" + (fechaActual.get(Calendar.MONTH) + 1) + "-" + fechaActual.get(Calendar.DAY_OF_MONTH);
+
         cliente.setNombre(request.getParameter("name"));
         cliente.setApellidos(request.getParameter("last_name"));
         cliente.setTelefono(request.getParameter("telefono"));
         cliente.setCorreo(request.getParameter("correo"));
-        cliente.setContrasenia(request.getParameter("pass"));
+
         //Revisar la Base de datos
         cliente.setIdMovimiento(0);
         //
         cliente.setDireccion(request.getParameter("dir"));
-        cliente.setStatusCliente(Integer.parseInt(request.getParameter("rolid")));
-        cliente.setIdUsrAlta(1);
+        //Validar si seleccionó el status del cliente, si no fue así
+        //asigna la cuenta como activa, 1
+        if (request.getParameter("rolid") != null) {
+            cliente.setStatusCliente(Integer.parseInt(request.getParameter("rolid")));
+        } else {
+            cliente.setStatusCliente(1);
+        }
+        cliente.setIdUsrAlta(1);//Usuario que creo el registro
 //        cliente.setIdUsrAlta(user.getIdUsuario());
         cliente.setFechaAlta(hoy);
-        cliente.setIdUsrMod(1);
+        cliente.setIdUsrMod(1);//Usuario que modificó el registro
 //        cliente.setIdUsrMod(user.getIdUsuario());
-        cliente.setFechaMod(hoy);
-        String idCliente = request.getParameter("idCliente");
-        
-//        response.setContentType("text/html;charset=UTF-8");
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet ClienteServlet</title>");
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.print("nombre: ");
-//            out.println(request.getParameter("name"));
-//            out.print("rol: ");
-//            out.println(request.getParameter("rolid"));
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
-        cdao = new ClienteDAO();
-        if(idCliente == null){
-            cdao.createCliente(cliente);
-        }else{
-            cliente.setIdCliente(Integer.parseInt(idCliente));
+        cliente.setFechaMod(hoy);//fecha del registro
+        //String idCliente = request.getParameter("idCliente");
+
+        //Valida que ambas contraseñas coincidan
+        if (request.getParameter("pass").equals(request.getParameter("confirm_pass"))) {
+            //si coinciden añade el dato a cliente
+            cliente.setContrasenia(request.getParameter("pass"));
+        } else {
+            //en caso de no hacerlo redirecciona al form para la creación
+            //con el resto de datos capturados
+            RequestDispatcher view = request.getRequestDispatcher("/clienteAdd.jsp");
+            request.setAttribute("cliente", cliente);
+            view.forward(request, response);
         }
-        RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
-        request.setAttribute("clientes", cdao.getAllCliente());
-        view.forward(request, response);
-        
-//         nombre,apellidos,telefono,correo,contrasenia,idMovimiento,direccion,statusCliente,
-//         idUsrAlta,fechaAlta,idUsrMod, fechaMod
-        
+
+        cdao = new ClienteDAO();
+        cdao.createCliente(cliente);//Inserta el cliente
+//        if (idCliente == null) {
+//            cdao.createCliente(cliente);
+//        } else {
+//            cliente.setIdCliente(Integer.parseInt(idCliente));
+//        }
+        response.sendRedirect(request.getContextPath()+"/ClienteServlet");
+//        RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+//        request.setAttribute("clientes", cdao.getAllCliente());
+//        view.forward(request, response);
     }
 
     /**
@@ -149,6 +212,5 @@ public class ClienteServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 
 }
