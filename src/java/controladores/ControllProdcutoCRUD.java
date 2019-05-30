@@ -21,10 +21,9 @@ public class ControllProdcutoCRUD extends HttpServlet {
             modelProducto productoM = new modelProducto();
             ArrayList<Producto> productos = productoM.getAllProducts();
             
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
             request.setAttribute("Productos", productos);
-            request.setAttribute("fecha", timestamp);
+            out.print("si llegas");
             request.getRequestDispatcher("crudProductos.jsp").forward(request, response);
 //
 //            if (action.equalsIgnoreCase("add")) {

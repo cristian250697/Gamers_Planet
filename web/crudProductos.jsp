@@ -52,7 +52,7 @@
                         </tr>
                         <%
                             ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("Productos");
-                           // Timestamp fechaActual = (Timestamp) request.getAttribute("fecha");
+                           
                             for (Producto producto : productos) {
 
                         %>
