@@ -53,9 +53,9 @@ public class ClienteServlet extends HttpServlet {
                 }
                 clientes = cdao.getAllCliente();
                 if (clientes.isEmpty()) {
-                    response.sendRedirect("/crudClientes.jsp");
+                    response.sendRedirect("crudClientes.jsp");
                 } else {
-                    RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+                    RequestDispatcher view = request.getRequestDispatcher("crudClientes.jsp");
                     request.setAttribute("clientes", clientes);
                     view.forward(request, response);
                 }
@@ -63,16 +63,16 @@ public class ClienteServlet extends HttpServlet {
                 if (request.getParameter("idCliente") != null) {
                     Cliente cliente = cdao.readCliente(Integer.parseInt(request.getParameter("idCliente")));
                     if (cliente != null) {//Si el cliente existe, llena los campos de clienteAdd
-                        RequestDispatcher view = request.getRequestDispatcher("/clienteAdd.jsp");
+                        RequestDispatcher view = request.getRequestDispatcher("clienteAdd.jsp");
                         request.setAttribute("cliente", cliente);
                         view.forward(request, response);
                     }
                 } else {
                     clientes = cdao.getAllCliente();
                     if (clientes.isEmpty()) {//Si no hay registros
-                        response.sendRedirect("/crudClientes.jsp");
+                        response.sendRedirect("crudClientes.jsp");
                     } else {//Si hay registros los envía al CRUDClientes para llenar la tabla
-                        RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+                        RequestDispatcher view = request.getRequestDispatcher("crudClientes.jsp");
                         request.setAttribute("clientes", clientes);
                         view.forward(request, response);
                     }
@@ -103,9 +103,9 @@ public class ClienteServlet extends HttpServlet {
                 }
                 clientes = cdao.getAllCliente();
                 if (clientes.isEmpty()) {//Si no hay registros
-                    response.sendRedirect("/crudClientes.jsp");
+                    response.sendRedirect("crudClientes.jsp");
                 } else {//Si hay registros los envía al CRUDClientes para llenar la tabla
-                    RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+                    RequestDispatcher view = request.getRequestDispatcher("crudClientes.jsp");
                     request.setAttribute("clientes", clientes);
                     view.forward(request, response);
                 }
@@ -113,9 +113,9 @@ public class ClienteServlet extends HttpServlet {
         } else {
             clientes = cdao.getAllCliente();
             if (clientes.isEmpty()) {//Si no hay registros
-                response.sendRedirect("/crudClientes.jsp");
+                response.sendRedirect("crudClientes.jsp");
             } else {//Si hay registros los envía al CRUDClientes para llenar la tabla
-                RequestDispatcher view = request.getRequestDispatcher("/crudClientes.jsp");
+                RequestDispatcher view = request.getRequestDispatcher("crudClientes.jsp");
                 request.setAttribute("clientes", clientes);
                 view.forward(request, response);
             }
@@ -189,7 +189,7 @@ public class ClienteServlet extends HttpServlet {
         } else {
             //en caso de no hacerlo redirecciona al form para la creación
             //con el resto de datos capturados
-            RequestDispatcher view = request.getRequestDispatcher("/clienteAdd.jsp");
+            RequestDispatcher view = request.getRequestDispatcher("clienteAdd.jsp");
             request.setAttribute("cliente", cliente);
             view.forward(request, response);
         }

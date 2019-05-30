@@ -46,7 +46,7 @@
 
             <ul class="list-unstyled CTAs">
                 <li>
-                    <a style="text-decoration: none;" href="index.html" class="download">Log out</a>
+                    <a style="text-decoration: none;" href="LogOutServlet" class="download">Log out</a>
                 </li>
             </ul>
         </nav>
