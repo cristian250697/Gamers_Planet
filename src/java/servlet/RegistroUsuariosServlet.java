@@ -152,7 +152,38 @@ public class RegistroUsuariosServlet extends HttpServlet {
 
        ClienteDAO cdao = new ClienteDAO();
         cdao.createCliente(cliente);
-        response.sendRedirect("/Gamers_Planet/crudUsuario.jsp");
+                Usuario newUser = new Usuario(1,nombre,apellido,telefono,correo,contrasenia,direccion,rol,1,1,"19/05/25",1,"19/05/25");
+        
+             
+         if(n.crearUsuario(newUser)){
+            response.sendRedirect("/Gamers_Planet/crudUsuario.jsp");
+            try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>No se pudo crear el usuario</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>si</h1>");
+            out.println("</body>");
+            out.println("</html>");
+          }
+         }else{
+             try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>No se pudo crear el usuario</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>error</h1>");
+            out.println("</body>");
+            out.println("</html>");
+          }
+       }
+        //response.sendRedirect("/Gamers_Planet/crudUsuario.jsp");
                  
              
              
