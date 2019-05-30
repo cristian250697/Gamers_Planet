@@ -3,6 +3,7 @@ package controladores;
 import entidades.Usuario;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
 
 public class ControladorUsuario {
 
@@ -15,7 +16,7 @@ public class ControladorUsuario {
     }
 
     public boolean crearUsuario(Usuario usuario) {
-        String sql = "INSERT INTO usuario (nombre, apellidos, telefono, correo, contrasenia, direccion, statusRol, statusUsr, idUsrAlta, fechaAlta, idUsrMod, fechaMod)"
+        String sql= "INSERT INTO usuario(nombre, apellidos,telefono, correo,contrasenia, direccion, statusRol, statusUsr, idUsrAlta, fechaAlta, idUsrMod, fechaMod)"
                 + "VALUES("
                 + "'" + usuario.getNombre() + "',"
                 + "'" + usuario.getApellido() + "',"
@@ -25,12 +26,12 @@ public class ControladorUsuario {
                 + "'" + usuario.getDireccion() + "',"
                 + usuario.getStatusRol() + ","
                 + usuario.getStatusUsuario() + ","
-                + usuario.getStatusUsuario() + ","
                 + usuario.getIdUsuarioAlta() + ","
-                + "'" + usuario.getFechaAlta() + "',"
+                + "NOW(),"
                 + usuario.getIdUsuarioModificacion() + ","
-                + "'" + usuario.getFechaModificacion() + "'"
+                + "NOW()"
                 + ");";
+
 
         if (conexion.ejecutarSQL(sql)) {
             return true;
@@ -39,6 +40,37 @@ public class ControladorUsuario {
         }
 
     }
+     public LinkedList MostrarUsuario() {
+        String sql = "SELECT * FROM usuario where statusUsr = 1 ";
+        LinkedList<Usuario> listaUsuario= new LinkedList<Usuario>();
+        ResultSet query = conexion.ejecutarSQLSelect(sql);
+
+        try {
+            while(query.next()) {
+                
+                listaUsuario.add(
+                new Usuario(
+                query.getInt(1),
+                query.getString(2),
+                query.getString(3),
+                query.getString(4),
+                query.getString(5),
+                query.getString(6),
+                query.getString(7),
+                query.getInt(8),
+                query.getInt(9),
+                query.getInt(10),
+                query.getString(11),
+                query.getInt(12),
+                query.getString(13)));                
+            }
+                    
+            return listaUsuario;
+        } catch (SQLException sqlExc) {
+            System.err.println("ERROR AL OBTENER LOS DATOS DEL USUARIO");
+            return null;
+        }
+     }
 
     public Usuario buscarUsuario(int idUsuario) {
         String sql = "SELECT * FROM usuario WHERE idUsuario = " + idUsuario;
@@ -84,9 +116,17 @@ public class ControladorUsuario {
     }
 
     public boolean actualizaUsuario(Usuario usuario) {
-
-        String sql = "UPDATE usuario SET "
-                + "nombre = '" + usuario.getNombre() + "',"
+        System.out.println(usuario.getNombre());
+        String sql = "UPDATE usuario SET nombre= '"+usuario.getNombre()+"', "
+                                      + "apellidos = '"+usuario.getApellido()+"',"
+                                      + "telefono = '" + usuario.getTelefono() + "',"
+                                       + "correo = '" + usuario.getCorreo() + "',"
+                                       + "contrasenia = '" + usuario.getContrasenia() + "',"
+                                       + "direccion = '" + usuario.getDireccion() + "',"
+                                         + "idUsrMod = " + usuario.getIdUsuarioModificacion()+","               
+                                          + "fechaMod = NOW()"
+                                         + " where idUsuario="+usuario.getIdUsuario();
+                /*+ "nombre = '" + usuario.getNombre() + "',"
                 + "apellidos = '" + usuario.getApellido() + "',"
                 + "telefono = '" + usuario.getTelefono() + "',"
                 + "correo = '" + usuario.getCorreo() + "',"
@@ -95,7 +135,7 @@ public class ControladorUsuario {
                 + "statusRol = " + usuario.getStatusRol() + ","
                 + "idUsrMod = " + usuario.getIdUsuarioModificacion() + ","
                 + "fechaMod = '" + usuario.getFechaModificacion() + "',"
-                + " WHERE idUsuario =" + usuario.getIdUsuario() + ";";
+                + " WHERE idUsuario =" + usuario.getIdUsuario() + ";";*/
 
         if (conexion.ejecutarSQL(sql)){
             return true;

@@ -4,7 +4,10 @@
     Author     : trebo
 --%>
 
+<%@page import="controladores.ClienteDAO"%>
+<%@page import="entidades.Cliente"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link rel="stylesheet" href="menuGamers.css">
 <!DOCTYPE html>
 <html>
@@ -22,39 +25,46 @@
             <%@ include file="menuToolBar.jsp" %>  
             <!--Aqui poner contenido de vistas-->
             <div class="form-group">
-                 <h1>Edita Clientes</h1>
+                <h1>Edita Clientes</h1>
             </div> 
-            <form action="ClienteServlet" method="POST">
+            
+            <c:set var="existe" value="false" />
+            <c:if test = "${cliente != null}">
+                <c:set var="existe" value="true" />
+            </c:if>
+            
+            <form action="ClienteServlet" method="${existe ? "get":"post"}">
                 <div class="form-group"> <!--Nombre-->
                     <label for="name_id" class="control-label">Nombre</label>
-                    <input type="text" class="form-control" id="name_id" name="name" placeholder="José Benito">
+                    <input required="true" type="text" class="form-control" id="name_id" name="name" placeholder="José Benito" value="${existe ? cliente.getNombre():""}" >
                 </div>    
+
 
                 <div class="form-group"> <!--Apellido-->
                     <label for="last_name_id" class="control-label">Apellido</label>
-                    <input type="text" class="form-control" id="last_name_id" name="last_name" placeholder="Rosas Macano">
+                    <input required="true" type="text" class="form-control" id="last_name_id" name="last_name" placeholder="Rosas Macano" value="${existe ? cliente.getApellidos():""}">
                 </div>                    
 
                 <div class="form-group"> <!-- Telefono-->
                     <label for="telefono_id" class="control-label">Telefono</label>
-                    <input type="text" class="form-control" id="telefono_id" name="telefono" placeholder="4771110022">
+                    <input required="true" type="text" class="form-control" id="telefono_id" name="telefono" placeholder="4771110022" value="${existe ? cliente.getTelefono():""}">
                 </div>    
 
                 <div class="form-group"> <!--Correo-->
                     <label for="correo_id" class="control-label">Correo</label>
-                    <input type="text" class="form-control" id="correo_id" name="correo" placeholder="something@example.com">
+                    <input required="true" type="text" class="form-control" id="correo_id" name="correo" placeholder="something@example.com" value="${existe ? cliente.getCorreo():""}">
                 </div>      
                 <div class="form-group"> 
                     <label for="pass_id" class="control-label">Contraseña</label>
-                    <input type="password" class="form-control" id="pass_id" name="pass" placeholder="YY#$asj01Qw">
+                    <input required="true" type="password" class="form-control" id="pass_id" name="pass" placeholder="YY#$asj01Qw" >
                 </div>    
                 <div class="form-group"> 
                     <label for="confirm_pass_id" class="control-label">Confirmar contraseña</label>
-                    <input type="password" class="form-control" id="confirm_pass_id" name="confirm_pass" placeholder="YY#$asj01Qw">
+                    <input required="true" type="password" class="form-control" id="confirm_pass_id" name="confirm_pass" placeholder="YY#$asj01Qw">
                 </div>    
                 <div class="form-group"> 
                     <label for="dir_id" class="control-label">Dirección</label>
-                    <input type="text" class="form-control" id="dir_id" name="dir" placeholder="Valle Hermoso, Bricho #213, Léon, GTO">
+                    <input required="true" type="text" class="form-control" id="dir_id" name="dir" placeholder="Valle Hermoso, Bricho #213, Léon, GTO" value="${existe ? cliente.getDireccion():""}">
                 </div>   
                 <div class="form-group">
                     <label for="rol_id" class="control-label">Estatus</label>
@@ -65,9 +75,12 @@
                     </select>     
                 </div>
                 <div class="form-group"> <!-- Submit Button -->
-                    <button type="submit" class="btn btn-primary">Done!</button>
+                    
+                    ${existe ?  "<input type=hidden name=idCliente value=".concat(cliente.getIdCliente()).concat(">"):""}
+                    ${existe ?  "<input type=hidden name=action value=update>":""}
+                    
+                    <input type="submit" class="btn btn-primary" ${existe ? "value=\"update\" name=\"update\"" :""}>
                 </div>     
-
             </form>
         </div>
         <!--Imports necesarios para menu-->
