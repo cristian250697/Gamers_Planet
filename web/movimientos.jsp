@@ -60,10 +60,10 @@
                             for (int i = 0; i < movimientos.size(); i++) {
                                 out.println("<tr>");
 
-                                out.println("<td>" + movimientos.get(i).getIdMovimiento() + "</td");
-                                out.println("<td>" + movimientos.get(i).getIdCliente() + "</td");
-                                out.println("<td>" + movimientos.get(i).getTipoMovimiento() + "</td");
-                                out.println("<td>" + movimientos.get(i).getFechaMovimiento() + "</td");
+                                out.println("<td>" + movimientos.get(i).getIdMovimiento() + "</td>");
+                                out.println("<td>" + movimientos.get(i).getIdCliente() + "</td>");
+                                out.println("<td>" + movimientos.get(i).getTipoMovimiento() + "</td>");
+                                out.println("<td>" + movimientos.get(i).getFechaMovimiento() + "</td>");
 
                                 out.println("</tr>");
                             }
