@@ -82,6 +82,8 @@ public class ModificaUsers extends HttpServlet {
          }
          if(!request.getParameter("dir").isEmpty()){
              user.setDireccion(request.getParameter("dir"));
+         }if(!request.getParameter("rol").isEmpty()){
+             user.setStatusRol(Integer.parseInt(request.getParameter("rol")));
          }
          
          if(n.actualizaUsuario(user)){

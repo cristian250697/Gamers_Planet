@@ -63,11 +63,12 @@
                 </div>   
                 <div class="form-group">
                     <label for="rol_id" class="control-label">Rol</label>
-                    <select id="rol_id "class="browser-default custom-select">
+                    <select id="rol_id" name="rol" class="browser-default custom-select">
                         <option value="" selected>Escoje el rol</option>
-                        <option value="usuario">Usuario</option>
-                        <option value="administrador">Administrador</option>
-                    </select>     
+                        <option value="0">Usuario</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Cliente</option>
+                    </select>    
                 </div>
                 <div class="form-group"> <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary">Modificar!</button>
