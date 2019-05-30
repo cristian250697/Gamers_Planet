@@ -34,6 +34,13 @@
                     <li>Trabaja duro.</li>
                 </ul>
 
+                <form>
+                    <di class="form-group">
+                        <p>Busquedas</p>
+                        Id    <input type="text" name="idProd">
+                        <button type="submit">buscar</button>
+                    </di>
+                </form>
                 <div id="table" class="table-editable">
                     <span class="table-add glyphicon glyphicon-plus"></span>
                     <table class="table">
@@ -51,9 +58,14 @@
                             <td><a href="ControllProductoForm?action=add"><button type="button" class="btn btn-success">Añadir</button></a></td>
                         </tr>
                         <%
+                            String idProd = request.getParameter("idProd");
+                            System.out.println("idProd: " + idProd);
+                            int cont = 0;
                             ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("Productos");
-                           // Timestamp fechaActual = (Timestamp) request.getAttribute("fecha");
+
                             for (Producto producto : productos) {
+                                cont++;
+                                if (idProd == null || idProd.equals("")) {
 
                         %>
                         <tr>
@@ -78,7 +90,42 @@
                             <td><a href="ControllProductoForm?action=update&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-primary">Actualizar</button></a></td>
                             <td><a href="ControllProductoForm?action=delete&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
                         </tr>
-                        <%                                }
+                        <%                                } else {
+                            if (producto.getIdProducto() == Integer.parseInt(idProd)) {
+                                cont--;
+                        %>
+                        <tr>
+                            <td><%=producto.getNombre()%></td>
+                            <td class="celda"><%=producto.getDescripcion()%></td>
+                            <td><%=producto.getUnidad()%></td>
+                            <td><%=producto.getExistencia()%></td>
+                            <td>$<%=producto.getPrecio()%></td>
+                            <td><%=producto.getIdAreaS()%></td>
+                            <%
+                                String status = "";
+                                if (producto.isStatusProd()) {
+                                    status = "Activo";
+                                } else {
+                                    status = "Inactivo";
+                                }
+                            %>
+                            <td><%=status%></td>
+                            <td><%=producto.getFechaAlta()%></td>
+                            <td>Aqui validas crisitan</td>
+                            <td><%=producto.getFechaMod()%></td>
+                            <td><a href="ControllProductoForm?action=update&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-primary">Actualizar</button></a></td>
+                            <td><a href="ControllProductoForm?action=delete&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                        </tr>
+                        <%
+
+                                    }
+
+                                    if (cont == productos.size()) {
+                                        response.sendRedirect("ControllProdcutoCRUD");
+                                    }
+                                }
+                            }
+
                         %>
 
                     </table>

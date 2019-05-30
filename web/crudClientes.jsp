@@ -3,7 +3,7 @@
     Created on : 15/05/2019, 11:43:03 AM
     Author     : trebo
 --%>
-
+<%@page import="entidades.Usuario"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="controladores.ClienteDAO"%>
 <%@page import="entidades.Cliente"%>
@@ -21,6 +21,12 @@
         <title>GAMERS PLANET</title>
     </head>
     <body>
+        <%
+
+            HttpSession sesion = request.getSession();
+            Usuario usr = (Usuario) sesion.getAttribute("usuario");
+
+        %>
         <!-- Sidebar  -->
         <%@ include file="menuCode.jsp" %>  
         <!-- Page Content  -->
@@ -29,7 +35,18 @@
             <!--Aqui poner contenido de vistas-->
             <div class="container">
                 <h1>Alta Clientes</h1>
-                <p>Clientes <strong>(Invitados)</strong></p>
+                <p>Usuario: <strong><%                    if (usr.getStatusRol() == 0) {
+                        out.println("Administrador");
+                    } else if (usr.getStatusRol() == 1) {
+                        out.println("Empleado");
+                    } else if (usr.getStatusRol() == 2) {
+                        out.println("Cliente");
+                    }
+
+
+                        %>
+
+                    </strong></p>
 
                 <ul>
                     <li>Edita con responsabilidad.</li> 
@@ -47,7 +64,9 @@
                             <th>Contraseña</th>
                             <th>Dirección</th>
                             <th>Estatus</th>
+                            <% if(usr.getStatusRol() == 0){ %>
                             <td><a href="clienteAdd.jsp"><button type="button" class="btn btn-success">Añadir</button></a></td>
+                            <%} %>
                         </tr>
 
 
@@ -65,8 +84,10 @@
                                         <td><c:out value="${cliente.getDireccion()}"/></td>
                                         <td><c:out value="${cliente.getStatusCliente()}"/></td>
                                         <td></td>
+                                        <% if(usr.getStatusRol() == 0){ %>
                                         <td><a href="ClienteServlet?action=actualizar&idCliente=${cliente.getIdCliente()}"><button type="button" class="btn btn-primary">Actualizar</button></a></td>
                                         <td><a href="ClienteServlet?action=delete&idCliente=${cliente.getIdCliente()}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                                        <%} %>
                                     </tr>
                                 </c:if>
                             </c:forEach>
