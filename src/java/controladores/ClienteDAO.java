@@ -94,7 +94,7 @@ public class ClienteDAO {
                     cliente.setIdUsrMod(resultSet.getInt("idUsrMod"));
                     cliente.setFechaMod(resultSet.getString("fechaMod"));
                 }
-                abd.cerrarConexion();
+//                abd.cerrarConexion();
             } catch (SQLException ex) {
                 Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -115,7 +115,7 @@ public class ClienteDAO {
                     "update cliente set nombre = ?, apellidos = ?, telefono = ?,"
                     + " correo = ?, contrasenia = ?, idMovimiento = ?, direccion = ?,"
                     + " statusCliente = ?, idUsrAlta = ?, fechaAlta = ?, idUsrMod = ?, "
-                    + "fechaMod where idCliente = ?";
+                    + "fechaMod = ? where idCliente = ?";
             try {
                 //Preparar query y asignar los campos
                 //Query para crear nuevo registro de Cliente
@@ -136,7 +136,7 @@ public class ClienteDAO {
                 //Ejecutar query
                 ps.executeUpdate();
                 //Cerrar conexion
-                abd.cerrarConexion();
+                //abd.cerrarConexion();
             } catch (SQLException ex) {
                 Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -146,6 +146,7 @@ public class ClienteDAO {
     
     /**
      * Eliminar un cliente por medio de su id
+     * Borrado lógico
      * @param idCliente 
      */
     public void deleteCliente(int idCliente){
@@ -155,14 +156,14 @@ public class ClienteDAO {
             //Crear query a ser procesada
             //Query para eliminar por medio del idCliente
             String query = 
-                    "delete from cliente where idCliente = ?";
+                    "update cliente set statusCliente=0 where idCliente=?";
               try {
                   PreparedStatement ps = c.prepareStatement(query);
                   ps.setInt(1, idCliente);
                   //Ejecutar query
                   ps.executeUpdate();
                   //Cerrar conexion
-                  abd.cerrarConexion();
+//                  abd.cerrarConexion();
               } catch (SQLException ex) {
                   Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
               }
@@ -170,8 +171,8 @@ public class ClienteDAO {
     }
     
     
-    public List<Cliente> getAllCliente(){
-        List<Cliente> clientes = new ArrayList<>();
+    public ArrayList<Cliente> getAllCliente(){
+        ArrayList<Cliente> clientes = new ArrayList<>();
         AccesoBD abd = new AccesoBD();
         if(abd.conectarBD()){   //Conectar a la base datos
             Connection c = abd.conexion;

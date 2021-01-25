@@ -6,19 +6,14 @@ import models.modelProducto;
 
 public class TestModelProduct {
 
-    ArrayList<Producto> productos;
 
     public TestModelProduct() {
-        productos = new ArrayList<>();
+
     }
 
     public void testGetAllProducts() {
-        modelProducto productoM = new modelProducto();
-        productos = productoM.getAllProducts();
-
-        for (Producto producto : productos) {
-            System.out.println(producto.getNombre());
-        }
+        modelProducto obj = new modelProducto();
+        obj.eliminarProducto(1);
     }
 
     public static void main(String[] args) {

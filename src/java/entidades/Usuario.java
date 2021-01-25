@@ -1,19 +1,19 @@
 package entidades;
 
 /*
-    Clase encapsulada del Usuario1
+    Clase encapsulada del Usuario
 */
 
-public class Usuario1 {
+public class Usuario {
     
     private int idUsuario, statusRol, statusUsuario, idUsuarioAlta, idUsuarioModificacion;
     private String nombre, apellido, telefono, correo, contrasenia, direccion, fechaAlta, fechaModificacion;
     
-    public Usuario1(){
+    public Usuario(){
         
     }
 
-    public Usuario1(int idUsuario, String nombre, String apellido, String telefono, String correo, String contrasenia, String direccion, int statusRol, int statusUsuario, int idUsuarioAlta, String fechaAlta, int idUsuarioModificacion, String fechaModificacion) {
+    public Usuario(int idUsuario, String nombre, String apellido, String telefono, String correo, String contrasenia, String direccion, int statusRol, int statusUsuario, int idUsuarioAlta, String fechaAlta, int idUsuarioModificacion, String fechaModificacion) {
         this.idUsuario = idUsuario;
         this.statusRol = statusRol;
         this.statusUsuario = statusUsuario;

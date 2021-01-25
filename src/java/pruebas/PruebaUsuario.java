@@ -5,14 +5,13 @@
  */
 package pruebas;
 
+
 /**
  *
  * @author crist
  */
 public class PruebaUsuario {
-    public static void main(String[] args) {
-       
-        
-    }
+    
+    
     
 }

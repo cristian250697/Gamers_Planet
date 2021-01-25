@@ -21,6 +21,12 @@ public class modelProducto {
     }
 
     public boolean crearProducto(Producto producto) {
+        int status = 0;
+        if (producto.isStatusProd()) {
+            status = 1;
+        } else {
+            status = 0;
+        }
         query = "INSERT INTO producto(nombre,descripcion,unidad,existencia,idArea,statusProd,idUsrAlta,fechaAlta,idUsrMod,fechaMod,precio)"
                 + "VALUES("
                 + "'" + producto.getNombre() + "',"
@@ -28,13 +34,13 @@ public class modelProducto {
                 + "'" + producto.getUnidad() + "',"
                 + producto.getExistencia() + ","
                 + producto.getIdArea() + ","
-                + producto.isStatusProd() + ","
-                + producto.getIdUsrAlta() + ","
-                + producto.getFechaAlta() + ","
-                + producto.getIdUsrMod() + ","
-                + producto.getFechaMod() + ","
+                + status + ","
+                + producto.getIdUsrAlta() + ",'"
+                + producto.getFechaAlta() + "',"
+                + producto.getIdUsrMod() + ",'"
+                + producto.getFechaMod() + "',"
                 + producto.getPrecio() + ");";
-
+        System.out.println("Query crea: " + query);
         if (conexion.ejecutarSQL(query)) {
             return true;
         } else {
@@ -105,7 +111,7 @@ public class modelProducto {
 
     public Producto searchProductoByName(String nameProduct) {
         Producto producto = new Producto();
-        query = "SELECT * FROM producto where nombre='" + nameProduct+"'";
+        query = "SELECT * FROM producto where nombre='" + nameProduct + "'";
         ResultSet response = conexion.ejecutarSQLSelect(query);
         if (response != null) {
             try {
@@ -134,7 +140,6 @@ public class modelProducto {
                     producto.setPrecio(response.getFloat(12));
 
                 }
-                conexion.cerrarConexion();
 
             } catch (SQLException e) {
                 conexion.cerrarConexion();
@@ -179,35 +184,43 @@ public class modelProducto {
 //
 //    }
 //
-//    public boolean eliminarUsuario(int idUsuario) {
-//        String query = "UPDATE usuario SET statusUsr = 0 WHERE idUsuario =" + idUsuario + ";";
-//
-//        if (conexion.ejecutarSQL(query)) {
-//            return true;
-//        } else {
-//            return false;
-//        }
-//    }
-//
-//    public boolean actualizaUsuario(Usuario usuario) {
-//
-//        String query = "UPDATE usuario SET "
-//                + "nombre = '" + usuario.getNombre() + "',"
-//                + "apellidos = '" + usuario.getApellido() + "',"
-//                + "telefono = '" + usuario.getTelefono() + "',"
-//                + "correo = '" + usuario.getCorreo() + "',"
-//                + "contrasenia = '" + usuario.getContrasenia() + "',"
-//                + "direccion = '" + usuario.getDireccion() + "',"
-//                + "statusRol = " + usuario.getStatusRol() + ","
-//                + "idUsrMod = " + usuario.getIdUsuarioModificacion() + ","
-//                + "fechaMod = '" + usuario.getFechaModificacion() + "',"
-//                + " WHERE idUsuario =" + usuario.getIdUsuario() + ";";
-//
-//        if (conexion.ejecutarSQL(query)){
-//            return true;
-//        } else {
-//            return false;
-//        }
-//
-//    }
+    public boolean eliminarProducto(int idProducto) {
+        String query = "UPDATE producto SET statusProd = 0 WHERE idProducto =" + idProducto;
+        System.out.println("New query: " + query);
+        if (conexion.ejecutarSQL(query)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public boolean actualizaProducto(Producto producto) {
+        int status = 0;
+        if (producto.isStatusProd()) {
+            status = 1;
+        } else {
+            status = 0;
+        }
+        String query = "UPDATE producto SET "
+                + "nombre = '" + producto.getNombre() + "',"
+                + "descripcion = '" + producto.getDescripcion() + "',"
+                + "unidad = '" + producto.getUnidad() + "',"
+                + "existencia = " + producto.getExistencia() + ","
+                + "idArea = " + producto.getIdArea() + ","
+                + "statusProd = " + status + ","
+                + "idUsrAlta = " + producto.getIdUsrAlta() + ","
+                + "fechaAlta = '" + producto.getFechaAlta() + "',"
+                + "idUsrMod = " + producto.getIdUsrMod() + ","
+                + "fechaMod = '" + producto.getFechaMod() + "',"
+                + "precio = " + producto.getPrecio()
+                + " WHERE idProducto =" + producto.getIdProducto() + ";";
+        System.out.println("Query: " + query);
+        if (conexion.ejecutarSQL(query)) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
 }

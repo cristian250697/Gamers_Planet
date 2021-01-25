@@ -1,8 +1,4 @@
-<%-- 
-    Document   : usuarioAdd
-    Created on : 15/05/2019, 08:57:37 PM
-    Author     : trebo
---%>
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
@@ -24,9 +20,9 @@
             <div class="form-group">
                  <h1>Edita Usuarios</h1>
             </div> 
-            <form>
+            <form action="RegistroUsuariosServlet" method="post">
                 <div class="form-group"> <!--Nombre-->
-                    <label for="name_id" class="control-label">Nombre</label>
+                    <label for="name_id" class="control-label">Nombre </label>
                     <input type="text" class="form-control" id="name_id" name="name" placeholder="José Benito">
                 </div>    
 
@@ -58,15 +54,18 @@
                 </div>   
                 <div class="form-group">
                     <label for="rol_id" class="control-label">Rol</label>
-                    <select id="rol_id "class="browser-default custom-select">
+                    <select id="rol_id" name="rol" class="browser-default custom-select">
                         <option value="" selected>Escoje el rol</option>
-                        <option value="usuario">Usuario</option>
-                        <option value="administrador">Administrador</option>
+                        <option value="0">Usuario</option>
+                        <option value="1">Administrador</option>
+                        <option value="2">Cliente</option>
                     </select>     
                 </div>
                 <div class="form-group"> <!-- Submit Button -->
                     <button type="submit" class="btn btn-primary">Done!</button>
-                </div>     
+                </div>
+                
+                <input type='hidden' name='accion' value='1' >
 
             </form>
         </div>

@@ -34,9 +34,10 @@ public class AccesoBD {
             //con la cadena depende de la gestión de la base de datos a utilizar
             //El Driver se tiene que agregar al proyecto web en Llibraries
             Class.forName("com.mysql.jdbc.Driver");
-            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/Gamers_Planet", "root", "MyNewPass");
+            conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/tienda?user=root&password=");
             return true;
         } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println(ex.getMessage());
             return false;
         }
     }
@@ -54,6 +55,7 @@ public class AccesoBD {
             sentencia.executeUpdate(sql);
             return true;
         } catch (SQLException ex) {
+            System.out.println("Error: "+ex);
             return false;
         }
     }
@@ -116,5 +118,15 @@ public class AccesoBD {
             sentencia.close();
         } catch (SQLException e) {
         }
+    }
+    
+    public static void main(String[] args) {
+        AccesoBD conexion = new AccesoBD();
+        if(conexion.conectarBD()){
+            System.out.println("conectada");
+        }else{
+            System.out.println("no conectada");
+        }
+        
     }
 }

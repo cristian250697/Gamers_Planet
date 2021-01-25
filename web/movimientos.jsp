@@ -4,6 +4,9 @@
     Author     : trebo
 --%>
 
+<%@page import="models.ModelMovimiento"%>
+<%@page import="entidades.Movimiento"%>
+<%@page import="java.util.LinkedList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
 <link rel="stylesheet" href="table.css">
@@ -39,13 +42,33 @@
                             <th>Tipo de movimiento</th>
                             <th>Fecha movimiento</th>
                         </tr>
-                        <tr>
+                        <!--<tr>
                             <td>1</td>
                             <td>Juan Silvestre</td>
                             <td>Compra</td>
                             <td>12/01/2019</td>                          
                             <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-                        </tr>
+                        </tr>-->
+                        <%
+
+                            LinkedList<Movimiento> movimientos;
+
+                            ModelMovimiento modelo = new ModelMovimiento();
+
+                            movimientos = modelo.getMovimientos();
+
+                            for (int i = 0; i < movimientos.size(); i++) {
+                                out.println("<tr>");
+
+                                out.println("<td>" + movimientos.get(i).getIdMovimiento() + "</td>");
+                                out.println("<td>" + movimientos.get(i).getIdCliente() + "</td>");
+                                out.println("<td>" + movimientos.get(i).getTipoMovimiento() + "</td>");
+                                out.println("<td>" + movimientos.get(i).getFechaMovimiento() + "</td>");
+
+                                out.println("</tr>");
+                            }
+
+                        %>
                     </table>
                 </div>             
             </div>

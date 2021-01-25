@@ -5,21 +5,22 @@
  */
 package servlet;
 
-import controladores.ControladorUsuario;
+import entidades.Movimiento;
 import entidades.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import models.ModelMovimiento;
 
 /**
  *
  * @author crist
  */
-public class LoginServlet extends HttpServlet {
+public class Salidas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");
+            out.println("<title>Servlet Salidas</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet Salidas at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,48 +75,21 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String usuario = request.getParameter("username");
-        String contrasenia = request.getParameter("password");
-        HttpSession sesion;
-        
-        ControladorUsuario cUsr = new ControladorUsuario();
-        Usuario usr = cUsr.buscarUsuario(Integer.parseInt(usuario));
-        
-        if (usr != null) {                                    // Si existe el usuario
-            if (usr.getContrasenia().equals(contrasenia)) {   // Si la contraseña es válida
+        Usuario usr = (Usuario) request.getSession().getAttribute("usuario");
+        int idUsuario = usr.getIdUsuario();
+        int idProducto = Integer.parseInt(request.getParameter("idProducto"));
+        int cantidadProducto = Integer.parseInt(request.getParameter("cantidadProducto"));
 
-                if (usr.getStatusUsuario() == 1) {            // Si el usuario está activo
-                    // Administrador
-                    if (usr.getStatusRol() == 0) {
-                        sesion = request.getSession(true);
-                        sesion.setMaxInactiveInterval(60*30);
-                        sesion.setAttribute("usuario", usr);
-                        response.sendRedirect("perfilUsuario.jsp");
-                        // Empleado
-                    } else if (usr.getStatusRol() == 1) {
-                        sesion = request.getSession(true);
-                        sesion.setMaxInactiveInterval(60*30);
-                        sesion.setAttribute("usuario", usr);
-                        response.sendRedirect("perfilUsuario.jsp");
-                        // Cliente
-                    } else if (usr.getStatusRol() == 2) {
-                        sesion = request.getSession(true);
-                        sesion.setMaxInactiveInterval(60*30);
-                        sesion.setAttribute("usuario", usr);
-                        response.sendRedirect("perfilUsuario.jsp");
-                    }
-                } else {
-                    System.err.println("Usuario Inactivo");
-                    response.sendRedirect("login.jsp");
-                }
-            } else {
-                System.err.println("Contraseña inválida");
-                response.sendRedirect("login.jsp");
-            }
-        } else {
-            System.err.println("No existe el usuario");
-            response.sendRedirect("login.jsp");
-        }
+        Movimiento movimiento = new Movimiento();
+        movimiento.setIdCliente(idUsuario);
+        movimiento.setTipoMovimiento("Salida");
+        movimiento.setFechaMovimiento(new Timestamp(new java.util.Date().getTime()));
+
+        ModelMovimiento nuevoMovimiento = new ModelMovimiento();
+
+        nuevoMovimiento.crearMovimiento(movimiento);
+
+        response.sendRedirect("movimientos.jsp");
 
     }
 
@@ -126,7 +100,7 @@ public class LoginServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Servlet que valida el inicio de sesión";
+        return "Short description";
     }// </editor-fold>
 
 }

@@ -4,6 +4,9 @@
     Author     : trebo
 --%>
 
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="entidades.Producto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
 <link rel="stylesheet" href="table.css">
@@ -31,6 +34,13 @@
                     <li>Trabaja duro.</li>
                 </ul>
 
+                <form>
+                    <di class="form-group">
+                        <p>Busquedas</p>
+                        Id    <input type="text" name="idProd">
+                        <button type="submit">buscar</button>
+                    </di>
+                </form>
                 <div id="table" class="table-editable">
                     <span class="table-add glyphicon glyphicon-plus"></span>
                     <table class="table">
@@ -39,28 +49,85 @@
                             <th>Descripción</th>
                             <th>Unidad(s)</th>
                             <th>Existencia</th>
+                            <th>Precio</th>
                             <th>Area</th>
                             <th>Estatus producto</th>
                             <th>Fecha de alta</th>
                             <th>Usuario ultima modificación</th>
                             <th>Fecha ultima modificación</th>
-                            <td><a href="productosAdd.jsp"><button type="button" class="btn btn-success">Añadir</button></a></td>
+                            <td><a href="ControllProductoForm?action=add"><button type="button" class="btn btn-success">Añadir</button></a></td>
                         </tr>
+                        <%
+                            String idProd = request.getParameter("idProd");
+                            System.out.println("idProd: " + idProd);
+                            int cont = 0;
+                            ArrayList<Producto> productos = (ArrayList<Producto>) request.getAttribute("Productos");
+
+                            for (Producto producto : productos) {
+                                cont++;
+                                if (idProd == null || idProd.equals("")) {
+
+                        %>
                         <tr>
-                            <td>Xbox 360</td>
-                            <td>Consola de Microsoft corporation</td>
-                            <td>1pz</td>
-                            <td>30</td>
-                            <td>Juegos</td>
-                            <td>Activo</td>
-                            <td>15/05/2019</td>
-                            <td>Juan Silvestre</td>
-                            <td>15/05/2019</td>
-                            <td><button type="button" class="btn btn-primary">Actualizar</button></td>
-                            <td><button type="button" class="btn btn-danger">Eliminar</button></td>
-
-
+                            <td><%=producto.getNombre()%></td>
+                            <td class="celda"><%=producto.getDescripcion()%></td>
+                            <td><%=producto.getUnidad()%></td>
+                            <td><%=producto.getExistencia()%></td>
+                            <td>$<%=producto.getPrecio()%></td>
+                            <td><%=producto.getIdAreaS()%></td>
+                            <%
+                                String status = "";
+                                if (producto.isStatusProd()) {
+                                    status = "Activo";
+                                } else {
+                                    status = "Inactivo";
+                                }
+                            %>
+                            <td><%=status%></td>
+                            <td><%=producto.getFechaAlta()%></td>
+                            <td>Aqui validas crisitan</td>
+                            <td><%=producto.getFechaMod()%></td>
+                            <td><a href="ControllProductoForm?action=update&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-primary">Actualizar</button></a></td>
+                            <td><a href="ControllProductoForm?action=delete&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
                         </tr>
+                        <%                                } else {
+                            if (producto.getIdProducto() == Integer.parseInt(idProd)) {
+                                cont--;
+                        %>
+                        <tr>
+                            <td><%=producto.getNombre()%></td>
+                            <td class="celda"><%=producto.getDescripcion()%></td>
+                            <td><%=producto.getUnidad()%></td>
+                            <td><%=producto.getExistencia()%></td>
+                            <td>$<%=producto.getPrecio()%></td>
+                            <td><%=producto.getIdAreaS()%></td>
+                            <%
+                                String status = "";
+                                if (producto.isStatusProd()) {
+                                    status = "Activo";
+                                } else {
+                                    status = "Inactivo";
+                                }
+                            %>
+                            <td><%=status%></td>
+                            <td><%=producto.getFechaAlta()%></td>
+                            <td>Aqui validas crisitan</td>
+                            <td><%=producto.getFechaMod()%></td>
+                            <td><a href="ControllProductoForm?action=update&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-primary">Actualizar</button></a></td>
+                            <td><a href="ControllProductoForm?action=delete&producto=<%=producto.getNombre()%>"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+                        </tr>
+                        <%
+
+                                    }
+
+                                    if (cont == productos.size()) {
+                                        response.sendRedirect("ControllProdcutoCRUD");
+                                    }
+                                }
+                            }
+
+                        %>
+
                     </table>
                 </div>             
             </div>

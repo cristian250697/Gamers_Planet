@@ -2,18 +2,8 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/src/java/entidades/Producto.java</file>
-            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/src/java/controladores/ControllProductoDetalle.java</file>
-            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/web/compraProducto.jsp</file>
-            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/web/index.html</file>
-            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/src/java/controladores/ControllProducts.java</file>
-            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/web/productoDetalle.jsp</file>
-            <file>file:/C:/Users/trebo/Desktop/GIT/Gamers_Planet/src/java/models/modelProducto.java</file>
+            <file>file:/F:/Escritorio/GIT/Gamers_Planet/src/java/controladores/AccesoBD.java</file>
         </group>
-=======
-        <group/>
->>>>>>> master
     </open-files>
 </project-private>

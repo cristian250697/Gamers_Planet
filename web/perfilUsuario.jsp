@@ -4,7 +4,7 @@
     Author     : trebo
 --%>
 
-<%@page import="web.Usuario"%>
+<%@page import="entidades.Usuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="menuGamers.css">
 <!DOCTYPE html>
@@ -39,7 +39,7 @@
             </div>
             <div class="form-group">
                 <label for="last_name" class="control-label">Apellido</label>
-                <p class="last_name"><% out.println(usr.getApellidos()); %></p>
+                <p class="last_name"><% out.println(usr.getApellido()); %></p>
             </div>
             <div class="form-group">
                 <label for="telefono" class="control-label">Telefono</label>

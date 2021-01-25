@@ -9,17 +9,48 @@
         <servlet-class>controladores.ControllProducts</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ControllProductoInsert</servlet-name>
+        <servlet-class>controladores.ControllProductoInsert</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ControllProductoDetalle</servlet-name>
         <servlet-class>controladores.ControllProductoDetalle</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
-        <servlet-name>ControlProductoEdit</servlet-name>
-        <servlet-class>controladores.ControlProductoEdit</servlet-class>
-=======
+        <servlet-name>ControllProductoAdd</servlet-name>
+        <servlet-class>controladores.ControllProductoAdd</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegistroUsuariosServlet</servlet-name>
+        <servlet-class>servlet.RegistroUsuariosServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ModificaUsers</servlet-name>
+        <servlet-class>servlet.ModificaUsers</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>ClienteServlet</servlet-name>
         <servlet-class>servlet.ClienteServlet</servlet-class>
->>>>>>> master
+    </servlet>
+    <servlet>
+        <servlet-name>ControllProdcutoCRUD</servlet-name>
+        <servlet-class>controladores.ControllProdcutoCRUD</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControllProductoForm</servlet-name>
+        <servlet-class>controladores.ControllProductoForm</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogOutServlet</servlet-name>
+        <servlet-class>servlet.LogOutServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Salidas</servlet-name>
+        <servlet-class>servlet.Salidas</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ControllMovimientoP</servlet-name>
+        <servlet-class>controladores.ControllMovimientoP</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
@@ -34,13 +65,44 @@
         <url-pattern>/ControllProductoDetalle</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
-        <servlet-name>ControlProductoEdit</servlet-name>
-        <url-pattern>/ControlProductoEdit</url-pattern>
-=======
+        <servlet-name>ControllProductoAdd</servlet-name>
+        <url-pattern>/ControllProductoAdd</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegistroUsuariosServlet</servlet-name>
+        <url-pattern>/RegistroUsuariosServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ModificaUsers</servlet-name>
+        <url-pattern>/ModificaUsers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ClienteServlet</servlet-name>
         <url-pattern>/ClienteServlet</url-pattern>
->>>>>>> master
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllProdcutoCRUD</servlet-name>
+        <url-pattern>/ControllProdcutoCRUD</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllProductoForm</servlet-name>
+        <url-pattern>/ControllProductoForm</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllProductoInsert</servlet-name>
+        <url-pattern>/ControllProductoInsert</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogOutServlet</servlet-name>
+        <url-pattern>/LogOutServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Salidas</servlet-name>
+        <url-pattern>/Salidas</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ControllMovimientoP</servlet-name>
+        <url-pattern>/ControllMovimientoP</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
